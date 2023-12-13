@@ -3,7 +3,6 @@ const cors  = require("cors");
 require("dotenv").config();
 const {connection} = require("./db");
 const { userRouter } = require("./routes/user.route");
-const { postRouter } = require("./routes/post.route");
 
 const PORT = process.env.PORT || 8080;
 
@@ -14,7 +13,6 @@ app.use(cors());
 
 
 app.use("/users", userRouter);
-app.use("/posts", postRouter);
 app.get("/", (req,res)=>{
     res.send("HomePage")
 })
