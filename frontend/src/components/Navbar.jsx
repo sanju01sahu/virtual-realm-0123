@@ -19,8 +19,10 @@ import {
   LockIcon,
   RepeatIcon,
 } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 const Navbar = () => {
+  let url = useLocation().pathname;
+  console.log(url);
   return (
     <div>
       <Flex
@@ -51,10 +53,30 @@ const Navbar = () => {
             alignItems={"center"}
             display={{ base: "none", lg: "flex" }}
           >
-            <Link to="/ourmenu">Our Menu</Link>
-            <Link to="/howitworks">How it Works</Link>
-            <Link to="/cookbook">CookBook</Link>
-            <Link to="/aboutus">About Us</Link>
+            <Link
+              to="/ourmenu"
+              style={{ color: url === "/ourmenu" ? "teal" : "" }}
+            >
+              Our Menu
+            </Link>
+            <Link
+              to="/howitworks"
+              style={{ color: url === "/howitworks" ? "teal" : "" }}
+            >
+              How it Works
+            </Link>
+            <Link
+              to="/cookbook"
+              style={{ color: url === "/cookbook" ? "teal" : "" }}
+            >
+              CookBook
+            </Link>
+            <Link
+              to="/aboutus"
+              style={{ color: url === "/aboutus" ? "teal" : "" }}
+            >
+              About Us
+            </Link>
           </Box>
         </Box>
 
@@ -79,21 +101,31 @@ const Navbar = () => {
               mr={"20px"}
             />
             <MenuList>
-              <MenuItem icon={<AddIcon />} command="">
-                Our Menu
-              </MenuItem>
-              <MenuItem icon={<ExternalLinkIcon />} command="">
-                CookBook
-              </MenuItem>
-              <MenuItem icon={<RepeatIcon />} command="">
-                How it Works
-              </MenuItem>
-              <MenuItem icon={<LockIcon />} command="">
-                Login
-              </MenuItem>
-              <MenuItem icon={<EditIcon />} command="">
-                About Us
-              </MenuItem>
+              <Link to="/ourmenu">
+                <MenuItem icon={<AddIcon />} command="">
+                  Our Menu
+                </MenuItem>
+              </Link>
+              <Link to="/cookbook">
+                <MenuItem icon={<ExternalLinkIcon />} command="">
+                  CookBook
+                </MenuItem>
+              </Link>
+              <Link to="/howitworks">
+                <MenuItem icon={<RepeatIcon />} command="">
+                  How it Works
+                </MenuItem>
+              </Link>
+              <Link to="/login">
+                <MenuItem icon={<LockIcon />} command="">
+                  Login
+                </MenuItem>
+              </Link>
+              <Link to="/aboutus">
+                <MenuItem icon={<EditIcon />} command="">
+                  About Us
+                </MenuItem>
+              </Link>
             </MenuList>
           </Menu>
         </Box>

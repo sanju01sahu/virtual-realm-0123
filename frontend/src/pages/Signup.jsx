@@ -65,10 +65,10 @@ const Signup = () => {
               </AbsoluteCenter>
             </Box>
 
-            <Link style={{ textAlign: "center" }} to="/signup">
+            <Link style={{ textAlign: "center" }} to="/login">
               <h2>
-                Don't have an account?{" "}
-                <span style={{ textDecoration: "underline" }}>Sign up</span>
+                Already a member ?{" "}
+                <span style={{ textDecoration: "underline" }}>Login</span>
               </h2>
             </Link>
           </Box>
