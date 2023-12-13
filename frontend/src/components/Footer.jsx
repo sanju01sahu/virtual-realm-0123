@@ -1,117 +1,124 @@
+import React from "react";
 import {
   Box,
-  Button,
-  Divider,
-  Flex,
-  Image,
-  Input,
-  Link,
+  Container,
+  SimpleGrid,
+  Stack,
   Text,
+  Flex,
+  Tag,
+  useColorModeValue,
+  Image,
 } from "@chakra-ui/react";
-import React from "react";
+
+const ListHeader = ({ children }) => {
+  return (
+    <Text fontWeight={"500"} fontSize={"lg"} mb={2}>
+      {children}
+    </Text>
+  );
+};
 
 const Footer = () => {
   return (
-    <>
-      <Box bg={"#FFE7CC"}>
-        <Box m={"100px"}>
-          <Flex w={"80%"} m={"auto"} justifyContent={"space-between"}>
-            <Flex
-              w={"50%"}
-              justifyContent={"space-evenly"}
-              alignItems={"center"}
-            >
-              <Box>
-                <Image src="https://themes.muffingroup.com/be/charity3/wp-content/uploads/2020/04/ngo2-contact-icon1.png"></Image>
-              </Box>
-              <Box>
-                <Text fontFamily={"DM Serif Display"} fontSize={26}>
-                  +61 (0) 383 766 284
-                </Text>
-              </Box>
-            </Flex>
-            <Flex
-              w={"50%"}
-              justifyContent={"space-evenly"}
-              alignItems={"center"}
-            >
-              <Box>
-                <Image src="https://themes.muffingroup.com/be/charity3/wp-content/uploads/2020/04/ngo2-contact-icon2.png"></Image>
-              </Box>
-              <Box>
-                <Text fontFamily={"DM Serif Display"} fontSize={26}>
-                  CookEase@gmail.com
-                </Text>
-              </Box>
-            </Flex>
-            <Flex w={"40%"} justifyContent={"center"} alignItems={"center"}>
-              <Box w={"10%"} m={"auto 10px"}>
-                <a href="https://www.facebook.com/">
-                  <Image
-                    src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4vfut6aghkegjfudn6v3.png"
-                    alt=""
-                  />
-                </a>
-              </Box>
-              <Box w={"10%"} m={"auto 10px"}>
-                <a href="https://www.twitter.com/">
-                  <Image
-                    src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7uaeuzqc4g4zqnm2ynjk.png"
-                    alt=""
-                  />
-                </a>
-              </Box>
-              <Box w={"10%"} m={"auto 10px"}>
-                <a href="https://www.youtube.com/">
-                  <Image
-                    src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wfppngj04rz0rgsvc5kg.png"
-                    alt=""
-                  />
-                </a>
-              </Box>
-            </Flex>
-          </Flex>
-          <br />
-          <Divider w={"100%"} m={"auto"} />
-        </Box>
-        <Box>
-          <Box w={"100%"} m={"auto"} mb={"100px"}>
-            <Image
-              m={"auto"}
-              src="https://i.ibb.co/THtf5pd/cookease.png"
-            ></Image>
-            <Text
-              m={"10px auto"}
-              color={"#666666"}
-              fontWeight={"300"}
-              fontSize={"15px"}
-              w={"60%"}
-              textAlign={"center"}
-            >
-              Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a
-              pellentesque dui, non felis. Maecenas malesuada elit lectus felis,
-              malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies
-              porta urna.
-            </Text>
-          </Box>
-        </Box>
-        <Divider />
-        <Flex w={"80%"} m={"20px auto"} justifyContent={"space-between"}>
-          <Flex w={"50%"} justifyContent={"space-evenly"} alignItems={"center"}>
-            <Box>
-              <Text color={"#666666"} fontWeight={"300"} fontSize={"15px"}>
-                © 2023 CookEase | All Rights Reserved | Powered by MERN
-              </Text>
+    <Box mt={"50px"} bg="#FFE7CC" color="#0b3954" fontFamily="Poppins">
+      <Container as={Stack} maxW={"6xl"} py={10}>
+        <SimpleGrid
+          columns={{ base: 1, sm: 2, md: 4 }}
+          m="auto"
+          spacing={{ base: 10, sm: 100, md: 150 }}
+        >
+          <Stack align={"flex-start"}>
+            <ListHeader>Product</ListHeader>
+            <Box as="a" href={"#"}>
+              Overview
             </Box>
-          </Flex>
-          <Flex w={"50%"} justifyContent={"space-evenly"} alignItems={"center"}>
-            <Box>
-              <Link href="#">Go To Top </Link>
+            <Stack direction={"row"} align={"center"} spacing={2}>
+              <Box as="a" href={"#"}>
+                Features
+              </Box>
+              <Tag
+                size={"sm"}
+                bg={useColorModeValue("green.300", "green.800")}
+                ml={2}
+                color={"white"}
+              >
+                New
+              </Tag>
+            </Stack>
+            <Box as="a" href={"#"}>
+              Pricing
             </Box>
-          </Flex>
+            <Box as="a" href={"#"}>
+              Releases
+            </Box>
+          </Stack>
+          <Stack align={"flex-start"}>
+            <ListHeader>Company</ListHeader>
+            <Box as="a" href={"#"}>
+              About Us
+            </Box>
+            <Box as="a" href={"#"}>
+              Careers
+            </Box>
+            <Box as="a" href={"#"}>
+              Contact Us
+            </Box>
+            <Box as="a" href={"#"}>
+              Partners
+            </Box>
+          </Stack>
+          <Stack align={"flex-start"}>
+            <ListHeader>Branches</ListHeader>
+            <Box as="a" href={"#"}>
+              Chennai
+            </Box>
+            <Box as="a" href={"#"}>
+              Mumbai
+            </Box>
+            <Box as="a" href={"#"}>
+              Kolkata
+            </Box>
+            <Box as="a" href={"#"}>
+              Delhi
+            </Box>
+          </Stack>
+          <Stack align={"flex-start"}>
+            <ListHeader>Need Help ?</ListHeader>
+            <Box as="a" href={"#"} color={"#ffb128"} fontWeight={"500"}>
+              +91 7994059967
+            </Box>
+            <Box as="a" href={"#"} color={"#ffb128"} fontWeight={"500"}>
+              +91 000 000 000
+            </Box>
+          </Stack>
+        </SimpleGrid>
+      </Container>
+      <Box py={10}>
+        <Flex
+          align={"center"}
+          _before={{
+            content: '""',
+            borderBottom: "1px solid",
+            borderColor: useColorModeValue("gray.200", "gray.700"),
+            flexGrow: 1,
+            mr: 8,
+          }}
+          _after={{
+            content: '""',
+            borderBottom: "1px solid",
+            borderColor: useColorModeValue("gray.200", "gray.700"),
+            flexGrow: 1,
+            ml: 8,
+          }}
+        >
+          <Image w="190px" src={"https://i.ibb.co/Ph12X57/utc.png"} />
         </Flex>
+        <Text pt={6} fontSize={"sm"} textAlign={"center"}>
+          2023 CookEase | @MERN Stack | All rights reserved
+        </Text>
       </Box>
-    </>
+    </Box>
   );
 };
 
