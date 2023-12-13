@@ -59,13 +59,15 @@ const Navbar = () => {
         </Box>
 
         <Box>
-          <Button
-            mr={"20px"}
-            bg={"#87CBB9"}
-            display={{ base: "none", lg: "flex" }}
-          >
-            Login
-          </Button>
+          <Link to="/login">
+            <Button
+              mr={"20px"}
+              bg={"#87CBB9"}
+              display={{ base: "none", lg: "flex" }}
+            >
+              Login
+            </Button>
+          </Link>
 
           <Menu>
             <MenuButton

@@ -8,7 +8,8 @@ import {
 import React, { useState } from "react";
 import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-const Signup = () => {
+
+const Login = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
@@ -24,12 +25,9 @@ const Signup = () => {
         alignItems={"center"}
       >
         <GridItem h={"500px"} bg={"#ECF9FF"} borderRadius={"10px"}>
-          <h1 style={{ textAlign: "center", fontSize: "30px" }}>Sign Up</h1>
+          <h1 style={{ textAlign: "center", fontSize: "30px" }}>Login</h1>
           <br />
           <Box w="70%" m={"auto"}>
-            <Input placeholder="Username" />
-            <br />
-            <br />
             <Input placeholder="email" />
             <br />
             <br />
@@ -86,4 +84,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
