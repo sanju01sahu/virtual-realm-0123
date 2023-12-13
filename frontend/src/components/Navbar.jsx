@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Flex, IconButton, Link, Spacer } from "@chakra-ui/react";
+import { Box, Button, Flex, IconButton, Spacer } from "@chakra-ui/react";
 
 import {
   Menu,
@@ -18,6 +18,7 @@ import {
   HamburgerIcon,
   RepeatIcon,
 } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
@@ -46,10 +47,10 @@ const Navbar = () => {
             alignItems={"center"}
             display={{ base: "none", lg: "flex" }}
           >
-            <Link>Our Menu</Link>
-            <Link>How it Works</Link>
-            <Link>CookBook</Link>
-            <Link>About Us</Link>
+            <Link to="/ourmenu">Our Menu</Link>
+            <Link to="/howitworks">How it Works</Link>
+            <Link to="/cookbook">CookBook</Link>
+            <Link to="/aboutus">About Us</Link>
           </Box>
         </Box>
 
