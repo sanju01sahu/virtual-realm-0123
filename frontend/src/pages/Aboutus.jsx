@@ -5,6 +5,7 @@ import React from 'react'
 const Aboutus = () => {
     return (
         <div>
+        
             <Box name="speciality" w={"100%"} mt={"30px"} mb={"30px"} m="auto" fontFamily="Agrandir, Verdana, Geneva, sans-serif" >
 
                 <h1 style={{ textAlign: "center", fontSize: "1.5em" }}>
@@ -90,9 +91,9 @@ const Aboutus = () => {
                 </Grid>
                 <br />
                 <br />
-
+                
                 <Grid w={"80%"}
-                    m={"auto"} ml="20%"
+                    ml="20%"
                     templateColumns={{
                         base: "repeat(1, 1fr)",
                         md: "repeat(2, 1fr)",
@@ -146,7 +147,7 @@ const Aboutus = () => {
             <br />
             <br />
 
-            <Box w="100%" bgColor={"#ECF9FF"} p="3%">
+            <Box w="100%" bgColor={"#ECF9FF"} p="3%" >
                 <Center>
 
                     <Grid w="85%" templateColumns={{
@@ -157,7 +158,7 @@ const Aboutus = () => {
                         gap={6}
                         >
                         <GridItem>
-                            <img src="https://img.hellofresh.com/w_1920,q_auto,f_auto,c_limit,fl_lossy/hellofresh_website/us/landing-pages/about-us/AboutUs_Image_1.png" alt="cookease" width="80%" />
+                            <img style={{margin:"auto"}} src="https://img.hellofresh.com/w_1920,q_auto,f_auto,c_limit,fl_lossy/hellofresh_website/us/landing-pages/about-us/AboutUs_Image_1.png" alt="cookease" width="80%" />
                         </GridItem>
                         <GridItem color={'#242424'}>
                             <Heading  fontSize={"26px"} fontWeight={"450"}>Here to Change the Way People Eat. Forever</Heading>
@@ -192,48 +193,18 @@ const Aboutus = () => {
 
                             </Text>
                             <br />
-                            <Button w="98%"  backgroundColor={"#06d094"}>
+                            <Button w="98%" m="auto" backgroundColor={"#06d094"}>
                                See How
                             </Button>
                         </GridItem>
                         <GridItem  ml="10%">
-                            <img src="https://img.hellofresh.com/w_1920,q_auto,f_auto,c_limit,fl_lossy/hellofresh_website/us/landing-pages/about-us/AboutUs_Image_2.png" alt="cookease" width="80%" />
+                            <img style={{margin:"auto"}} src="https://img.hellofresh.com/w_1920,q_auto,f_auto,c_limit,fl_lossy/hellofresh_website/us/landing-pages/about-us/AboutUs_Image_2.png" alt="cookease" width="80%" />
                         </GridItem>
                     </Grid>
                 </Center>
             </Box>
 
-            <Box w="100%" p="3%">
-                <Center>
-
-                    <Grid w="85%" templateColumns={{
-                        base: "repeat(1, 1fr)",
-                        md: "repeat(2, 1fr)",
-                        lg: "repeat(2, 1fr)",
-                    }}
-                        gap={6}
-                        >
-                        <GridItem>
-                            <img src="https://img.hellofresh.com/w_1920,q_auto,f_auto,c_limit,fl_lossy/hellofresh_website/us/landing-pages/about-us/AboutUs_Image_3.png" alt="cookease" width="80%" />
-                        </GridItem>
-                        <GridItem color={'#242424'}>
-                            <Heading  fontSize={"26px"} fontWeight={"450"}>How We Got Here</Heading>
-                            <br />
-                            <Text>In 2011, our founders Dominik and Thomas spent afternoons packing pre-portioned recipe ingredients for their community. Their purpose? To test a new way to get home cooked meals on tables around the world.
-
-                            </Text>
-                            <br />
-                            <Text>
-                            Little by little, their experiment became a real business that changed the way people eat. With love and dedication, HelloFresh went from a small, home-grown project to a meal kit service spanning 18 countries and over 1 billion meals—the biggest in the world.
-                            </Text>
-                            <br/>
-                            <Text>
-                            But despite its immense success, our philosophy remains the same: to make it easy for everyone to prepare a delicious, home-cooked meal for them and their loved ones.
-                            </Text>
-                        </GridItem>
-                    </Grid>
-                </Center>
-            </Box>
+         
             
         </div>
     )

@@ -5,6 +5,7 @@ import Aboutus from "../pages/Aboutus";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
 import SingleProduct from "../pages/SingleProduct";
+
 const Allroutes = () => {
   return (
     <div>
@@ -14,6 +15,8 @@ const Allroutes = () => {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/singleproduct" element={<SingleProduct />}></Route>
+     
+
       </Routes>
     </div>
   );
