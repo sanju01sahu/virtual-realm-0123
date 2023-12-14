@@ -23,7 +23,7 @@ const Signup = () => {
         gap={6}
         alignItems={"center"}
       >
-        <GridItem h={"500px"} bg={"#ECF9FF"} borderRadius={"10px"}>
+        <GridItem h={"650px"} bg={"#ECF9FF"} borderRadius={"10px"} py={"5em"}>
           <h1 style={{ textAlign: "center", fontSize: "30px" }}>Sign Up</h1>
           <br />
           <Box w="70%" m={"auto"}>

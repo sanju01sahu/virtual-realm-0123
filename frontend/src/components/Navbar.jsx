@@ -32,7 +32,7 @@ const Navbar = () => {
         justifyContent={"space-between"}
         alignItems={"center"}
       >
-        <Box h={"40px"} ml={"10px"} name="logo" display={"flex"}>
+        <Box h={"40px"} ml={"20px"} name="logo" display={"flex"}>
           <Link to="/">
             <img
               style={{ height: "100%" }}
