@@ -1,15 +1,11 @@
-import React from "react"; // import "./App.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import React from "react"; //
 import Allroutes from "./Routes/Allroutes";
-
+import "./App.css";
 function App() {
   return (
     <>
       <div>
-        <Navbar />
         <Allroutes />
-        <Footer />
       </div>
     </>
   );
