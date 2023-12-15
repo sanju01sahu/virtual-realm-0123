@@ -45,8 +45,20 @@ const AdminUsers = () => {
   // const handleDeleteUser = (id) => {
   //   dispatch(deleteUser(id, userData));
   // };
-  const isLoading = true;
+  const isLoading = false;
   const userData = [];
+
+  const userDetails=async()=>{
+
+    try {
+      let res = await fetch(`http://localhost:8080/users`)
+      let data = res.json();
+      userData.push(data)
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+  // console.log(userData)
   return (
     <>
       <Box position="relative" padding="10">
@@ -61,11 +73,13 @@ const AdminUsers = () => {
           Users
         </Text>
       </Box>
-      {(isLoading && userData.length === 0 && (
+      {
+      (isLoading || (
         <Stack bg={"white"} m={"auto"} w={"80%"} h={"350px"}>
           <CircularProgress m={"auto"} isIndeterminate color="green.300" />
         </Stack>
-      )) || (
+      )) ||
+       (
         <Table w="80%" m="auto">
           <Thead>
             <Tr>
