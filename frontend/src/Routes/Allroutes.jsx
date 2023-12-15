@@ -8,6 +8,11 @@ import SingleProduct from "../pages/SingleProduct";
 import CartPage from "../pages/CartPage";
 // import Adminpage from "../admin/Pages/Adminpage";
 
+import Checkout from "../pages/Checkout";
+import Dashboard from "../Admin/Pages/Dashboard";
+import AdminNavbar from "../Admin/Components/AdminNavbar";
+
+
 const Allroutes = () => {
   return (
     <div>
@@ -17,7 +22,8 @@ const Allroutes = () => {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/singleproduct" element={<SingleProduct />}></Route>
-        {/* <Route path="admin" element={<Adminpage />}></Route> */}
+
+        <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
 
 
