@@ -28,7 +28,7 @@ const AdminCategories = () => {
         textAlign={"center"}
         fontFamily={"DM Serif Display"}
       >
-        Products List
+       Recipes List
       </Heading>
       <Products />
     </Container>

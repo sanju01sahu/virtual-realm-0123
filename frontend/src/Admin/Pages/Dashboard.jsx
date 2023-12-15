@@ -42,11 +42,12 @@ const Dashboard = () => {
       <Grid
         templateRows="repeat(2, 1fr)"
         // templateColumns="repeat(2, 1fr)"
-        templateColumns={["repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(2, 1fr)"]}
+        templateColumns={{base:"repeat(1, 1fr)", md:"repeat(1, 1fr)", lg:"repeat(2, 1fr)"}}
         gap={4}
       >
         <GridItem
-          h="320px"
+          // h="320px"
+          p="1%"
           colSpan={[1, 1, 1]}
           bg="lightgrey"
           style={{ borderRadius: "10px" }}
@@ -65,6 +66,7 @@ const Dashboard = () => {
         {/* ================  Bar chart   ========================= */}
         <GridItem
           h="320px"
+          
           colSpan={[1, 1, 1]}
           bg="lightgrey"
           style={{ borderRadius: "10px" }}
