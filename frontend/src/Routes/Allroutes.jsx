@@ -10,7 +10,6 @@ import Checkout from "../pages/Checkout";
 // import Dashboard from "../Admin/Pages/Dashboard";
 import AdminNavbar from "../Admin/Components/AdminNavbar";
 
-
 const Allroutes = () => {
   return (
     <div>
@@ -23,9 +22,6 @@ const Allroutes = () => {
         <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/admin" element={<AdminNavbar />}></Route>
-
-
-
       </Routes>
     </div>
   );
