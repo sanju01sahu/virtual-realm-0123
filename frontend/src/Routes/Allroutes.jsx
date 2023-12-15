@@ -5,9 +5,11 @@ import Aboutus from "../pages/Aboutus";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
 import SingleProduct from "../pages/SingleProduct";
+
 import Checkout from "../pages/Checkout";
 import Dashboard from "../Admin/Pages/Dashboard";
 import AdminNavbar from "../Admin/Components/AdminNavbar";
+
 
 const Allroutes = () => {
   return (
@@ -19,7 +21,7 @@ const Allroutes = () => {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/singleproduct" element={<SingleProduct />}></Route>
         <Route path="/checkout" element={<Checkout />}></Route>
-        <Route path="/admin" element={<AdminNavbar />}></Route>
+
       </Routes>
     </div>
   );
