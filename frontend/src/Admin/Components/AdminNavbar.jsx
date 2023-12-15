@@ -240,7 +240,7 @@ const AdminNavbar = () => {
   const [Link, setLink] = useState("");
 
   const [params, setSearchParams] = useSearchParams("" || { path: "/admin" });
-  console.log(params.get("path").split("/")[3], "i dont know bro");
+  // console.log(params.get("path").split("/")[3], "i dont know bro");
 
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
