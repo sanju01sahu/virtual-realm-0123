@@ -30,7 +30,7 @@ const CartPage = () => {
     return (
         <div>
             <Navbar />
-            <Flex justifyContent={"space-evenly"} flexDirection={{ base: "column", md: "column", lg: "row" }} alignItems={{ base: "center", md: "center", lg: "auto" }} my="20px">
+            <Flex justifyContent={"space-evenly"} flexDirection={{ base: "column", md: "column", lg: "row" }}  alignItems={{ base: "center", md: "center", lg: "auto" }} my="20px">
                 <HStack my="3%" w="75%">
                     {data?.map((recipe, i) => (
                         <Grid w="auto"

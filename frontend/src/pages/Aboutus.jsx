@@ -8,7 +8,7 @@ const Aboutus = () => {
   return (
     <>
       <Navbar />
-      <div>
+      <div style={{fontFamily:"Agrandir, Verdana, Geneva, sans-serif"}}>
         <Box
           name="speciality"
           w={"100%"}
@@ -247,39 +247,6 @@ const Aboutus = () => {
               }}
               gap={6}
             >
-              <GridItem>
-                <img
-                  src="https://img.hellofresh.com/w_1920,q_auto,f_auto,c_limit,fl_lossy/hellofresh_website/us/landing-pages/about-us/AboutUs_Image_3.png"
-                  alt="cookease"
-                  width="80%"
-                />
-              </GridItem>
-              <GridItem color={"#242424"}>
-                <Heading fontSize={"26px"} fontWeight={"450"}>
-                  How We Got Here
-                </Heading>
-                <br />
-                <Text>
-                  In 2011, our founders Dominik and Thomas spent afternoons
-                  packing pre-portioned recipe ingredients for their community.
-                  Their purpose? To test a new way to get home cooked meals on
-                  tables around the world.
-                </Text>
-                <br />
-                <Text>
-                  Little by little, their experiment became a real business that
-                  changed the way people eat. With love and dedication,
-                  HelloFresh went from a small, home-grown project to a meal kit
-                  service spanning 18 countries and over 1 billion meals—the
-                  biggest in the world.
-                </Text>
-                <br />
-                <Text>
-                  But despite its immense success, our philosophy remains the
-                  same: to make it easy for everyone to prepare a delicious,
-                  home-cooked meal for them and their loved ones.
-                </Text>
-              </GridItem>
             </Grid>
           </Center>
         </Box>

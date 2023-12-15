@@ -46,7 +46,7 @@ const LinkItems = [
   { name: "Dashboard", icon: FiHome, link: "/admin/dashboard/" },
   { name: "Users", icon: FiTrendingUp, link: "/admin/users/" },
   {
-    name: "Products",
+    name: "Recipes",
     icon: FiCompass,
     link: "/admin/category/",
   },

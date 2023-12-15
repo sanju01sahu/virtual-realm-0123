@@ -16,41 +16,45 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-
+/**
+ * 
+ image:[String],
+  title: String,
+  category:[String],
+  ingredient_number: Number,
+  ingredient_list:[String],
+  serving: Number,
+  instructions: String,
+ */
 export const Products = () => {
-  const initProduct = {
+  const initRecipe = {
     title: "",
-    category: "",
-    goal: "",
     image: "",
-    description: "",
-    organizer: "",
-    current_funds: 0,
-    beneficiary: {
-      name: "Disaster Relief Water Project",
-      location: "Disaster-affected areas",
-      story: "See how clean water is a lifeline during disaster recovery.",
-    },
+    category: [],
+    ingredient_number:0,
+    ingredient_list: [],
+    serving:0,
+    instructions:"",
   };
-  let newProd;
-  let [newProduct, setNewProduct] = useState(initProduct);
-  let [newProduct1, setNewProduct1] = useState(initProduct);
+  let newRecipe;
+  let [newRecipes, setnewRecipes] = useState(initRecipe);
+  let [newRecipes1, setnewRecipes1] = useState(initRecipe);
   const handleChange = (e) => {
-    newProd = {
-      ...newProduct,
+    newRecipe = {
+      ...newRecipes,
       [e.target.name]:
         e.target.name == "goal" ? +e.target.value : e.target.value,
     };
-    setNewProduct(newProd);
+    setnewRecipes(newRecipe);
   };
 
   const handleChange1 = (e) => {
-    let newProd1 = {
-      ...newProduct1,
+    let newRecipe1 = {
+      ...newRecipes1,
       [e.target.name]:
         e.target.name == "goal" ? +e.target.value : e.target.value,
     };
-    setNewProduct1(newProd1);
+    setnewRecipes1(newRecipe1);
   };
 
   let Navigate = useNavigate();
@@ -60,23 +64,23 @@ export const Products = () => {
   const AddProduct = (e) => {
     e.preventDefault();
 
-    AddDonationRequest(newProduct).then((res) => {
+    AddDonationRequest(newRecipes).then((res) => {
       setData([...data, res.data.AddedDonation]);
     });
-    setNewProduct(initProduct);
+    setnewRecipes(initRecipe);
   };
 
   const handleEdit = (id) => {
     DonationSingleRequest(id).then((res) => {
-      setNewProduct1(res.data);
+      setnewRecipes1(res.data);
     });
   };
-  let ids = newProduct1._id;
+  let ids = newRecipes1._id;
 
   const EditProduct = () => {
-    PatchDonationRequest(ids, newProduct1).then((res) => alert(res.data.msg));
+    PatchDonationRequest(ids, newRecipes1).then((res) => alert(res.data.msg));
 
-    setNewProduct1(initProduct);
+    setnewRecipes1(initRecipe);
   };
   const deleteProduct = (id) => {
     console.log(id);
@@ -115,7 +119,7 @@ export const Products = () => {
                   mb={2}
                   fontSize={"25"}
                 >
-                  Create a new Product
+                  Create a new Recipe
                 </Text>
                 <Input
                   variant="flushed"
@@ -123,7 +127,7 @@ export const Products = () => {
                   placeholder="Title"
                   type="text"
                   name="title"
-                  value={newProduct.title}
+                  value={newRecipes.title}
                   onChange={handleChange}
                   marginBottom={4}
                   alignItems={"center"}
@@ -135,7 +139,7 @@ export const Products = () => {
                   variant="flushed"
                   borderBottom={"1px solid black"}
                   name="category"
-                  value={newProduct.category}
+                  value={newRecipes.category}
                   placeholder="Category"
                   onChange={handleChange}
                 >
@@ -150,7 +154,7 @@ export const Products = () => {
                   placeholder="Goal"
                   type="number"
                   name="goal"
-                  value={newProduct.goal}
+                  value={newRecipes.goal}
                   onChange={handleChange}
                 />
                 <Input
@@ -159,7 +163,7 @@ export const Products = () => {
                   placeholder="Image URL"
                   type="url"
                   name="image"
-                  value={newProduct.image}
+                  value={newRecipes.image}
                   onChange={handleChange}
                 />
                 <Input
@@ -168,7 +172,7 @@ export const Products = () => {
                   placeholder="Description"
                   type="text"
                   name="description"
-                  value={newProduct.description}
+                  value={newRecipes.description}
                   onChange={handleChange}
                 />
 
@@ -200,7 +204,7 @@ export const Products = () => {
                   mb={2}
                   fontSize={"25"}
                 >
-                  Update an existing Product
+                  Update an existing Recipe
                 </Text>
                 <Input
                   variant="flushed"
@@ -208,7 +212,7 @@ export const Products = () => {
                   placeholder="Title"
                   type="text"
                   name="title"
-                  value={newProduct1.title}
+                  value={newRecipes1.title}
                   onChange={handleChange1}
                 />
 
@@ -216,7 +220,7 @@ export const Products = () => {
                   variant="flushed"
                   borderBottom={"1px solid black"}
                   name="category"
-                  value={newProduct1.category}
+                  value={newRecipes1.category}
                   placeholder="Category"
                   onChange={handleChange1}
                 >
@@ -231,7 +235,7 @@ export const Products = () => {
                   placeholder="Goal"
                   type="number"
                   name="goal"
-                  value={newProduct1.goal}
+                  value={newRecipes1.goal}
                   onChange={handleChange1}
                 />
                 <Input
@@ -240,7 +244,7 @@ export const Products = () => {
                   placeholder="Image URL"
                   type="url"
                   name="image"
-                  value={newProduct1.image}
+                  value={newRecipes1.image}
                   onChange={handleChange1}
                 />
                 <Input
@@ -249,7 +253,7 @@ export const Products = () => {
                   placeholder="Description"
                   type="text"
                   name="description"
-                  value={newProduct1.description}
+                  value={newRecipes1.description}
                   onChange={handleChange1}
                 />
 
