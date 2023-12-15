@@ -2,6 +2,7 @@ import { Box, Grid, GridItem, Text } from "@chakra-ui/layout";
 import React from "react";
 
 const SingleProduct = () => {
+ 
   return (
     <Box mt={"50px"}>
       <Box w={"100%"}>
@@ -13,7 +14,7 @@ const SingleProduct = () => {
               borderRadius: "50px",
               boxShadow: " rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
             }}
-            src="https://img.hellofresh.com/c_fit,f_auto,fl_lossy,h_500,q_30,w_1900/hellofresh_s3/image/crispy-chicken-milanese-6ec4e9a4.jpg"
+            src=""
             alt=""
           />
         </Box>
