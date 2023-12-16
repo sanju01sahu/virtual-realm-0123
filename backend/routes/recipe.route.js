@@ -6,6 +6,7 @@ const recipeRouter=express.Router();
 
 recipeRouter.get("/",async(req,res)=>{
    try{
+       console.log(token,"from recipe route");
        let query=req.query;
        console.log(query);
        let allPosts=await RecipeModel.find(query);
@@ -37,7 +38,7 @@ recipeRouter.patch("/updateRecipe/:id",async(req,res)=>{
         let updatedRecipe=await RecipeModel.find({_id:id});
         res.status(200).send({"msg":"recipe updated","data":updatedRecipe});
     }catch(err){
-        res.status(400).send({"error":err.message})
+        res.status(400).send({"error":err.message});
     }
 })
 
