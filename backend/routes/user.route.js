@@ -7,12 +7,26 @@ const { BlacklistModel } = require("../models/blacklist.model");
 const userRouter = express.Router();
 
 
+userRouter.get("/",async(req,res)=>{
+  try {
+    const user = await UserModel.find();
+    res.status(200).send(user)
+    
+  } catch (error) {
+    return res.status(400).send(error.message);
+    
+  }
+})
+
 userRouter.post("/register", async (req, res) => {
   const { email, password } = req.body;
   try {
     const existingUser = await UserModel.find({ email });
     if (existingUser.length) {
+      return res.status(400).send({ msg: "user already exist" });
+
       return res.status(200).send({ "msg": "user already exists , Please login" });
+
     }
 
     const newPass = bcrypt.hashSync(password, 8);
@@ -22,7 +36,8 @@ userRouter.post("/register", async (req, res) => {
     await newUser.save();
     return res.status(200).send({ "msg": "new user resgitered" });
   } catch (error) {
-    return res.status(400).send({ "msg": "registration failed", err: error });
+    return res.status(400).send({ msg: "registration failed", err: error });
+
   }
 });
 
@@ -56,6 +71,19 @@ userRouter.post("/login", async (req, res) => {
 
 });
 
+userRouter.delete("/delete/:id",async(req,res)=>{
+
+  const {id} = req.params;
+  try {
+    await UserModel.findByIdAndDelete({_id:id})
+    res.status(200).send({message:"User has been deleted"})
+  } catch (error) {
+    res.status(400).send({ error: error });
+    
+  }
+})
+
+
 userRouter.post("/logout",async(req,res)=>{
     try{
          let token=req.cookies.token;
@@ -67,4 +95,5 @@ userRouter.post("/logout",async(req,res)=>{
          res.status(400).send({ error: err.message });
     }
 })
+
 module.exports = { userRouter };
