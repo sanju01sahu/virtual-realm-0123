@@ -36,6 +36,7 @@ adminRouter.post("/login", async (req, res) => {
             expiresIn: 3600000,
           });
 
+          
           return res.status(200).send({ msg: "login sucessful", token });
         } else {
           res.status(200).send({ msg: "login failed" });

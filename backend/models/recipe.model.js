@@ -3,9 +3,8 @@ const mongoose = require("mongoose");
 const recipeSchema = mongoose.Schema({
   image:[String],
   title: String,
-  ingredient_number: Number,
-  ingredient_list:[String],
-  category:[String],
+  ingredients:[String],
+  category:String,
   serving: Number,
   instructions: String,
   
@@ -13,4 +12,4 @@ const recipeSchema = mongoose.Schema({
 
 const RecipeModel = mongoose.model("recipe", recipeSchema);
 
-module.exports = { UserRecipeModelModel };
+module.exports = {RecipeModel };
