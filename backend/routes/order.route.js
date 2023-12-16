@@ -2,9 +2,13 @@
 const express=require("express");
 
 const orderRouter=express.Router();
+const {OrderModel}=require("../models/orders.model");
 
-orderRouter.get("/",(req,res)=>{
+orderRouter.get("/:id",async(req,res)=>{
     try{
+        
+        let {id}=req.params;
+        let odersById=await OrderModel.find({_id:id});
         res.status(200).send("gets all orders page");
     }catch(err){
         res.send({"msg":"get orders failed"})
@@ -14,6 +18,7 @@ orderRouter.get("/",(req,res)=>{
 
 orderRouter.post("/",(req,res)=>{
     try{
+        
         res.status(200).send("adds a new order to database");
     }catch(err){
         res.send({"msg":"post orders failed"})
