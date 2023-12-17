@@ -1,9 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from 'react-redux';
-// import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-// import styled from 'styled-components';
-
-// import { getProductDataFromAPI } from "../../UserPage/Utilis/api";
 
 import {
   Box,
@@ -16,23 +11,14 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-/**
- * 
- image:[String],
-  title: String,
-  category:[String],
-  ingredient_number: Number,
-  ingredient_list:[String],
-  serving: Number,
-  instructions: String,
- */
+
 export const Products = () => {
   const initRecipe = {
     title: "",
     image: "",
-    category: [],
+    category: "",
     ingredient_number:0,
-    ingredient_list: [],
+    ingredient_list:"",
     serving:0,
     instructions:"",
   };
@@ -42,17 +28,16 @@ export const Products = () => {
   const handleChange = (e) => {
     newRecipe = {
       ...newRecipes,
-      [e.target.name]:
-        e.target.name == "goal" ? +e.target.value : e.target.value,
+      [e.target.name]: e.target.value,
     };
     setnewRecipes(newRecipe);
   };
 
+  // console.log(newRecipes)
   const handleChange1 = (e) => {
     let newRecipe1 = {
       ...newRecipes1,
-      [e.target.name]:
-        e.target.name == "goal" ? +e.target.value : e.target.value,
+      [e.target.name]: e.target.value,
     };
     setnewRecipes1(newRecipe1);
   };
@@ -64,12 +49,12 @@ export const Products = () => {
   const AddProduct = (e) => {
     e.preventDefault();
 
-    AddDonationRequest(newRecipes).then((res) => {
-      setData([...data, res.data.AddedDonation]);
-    });
+   
+      setData([...data, newRecipes]);
     setnewRecipes(initRecipe);
   };
 
+  console.log(data)
   const handleEdit = (id) => {
     DonationSingleRequest(id).then((res) => {
       setnewRecipes1(res.data);
@@ -90,11 +75,6 @@ export const Products = () => {
     setFlag(!flag);
   };
 
-  // useEffect(() => {
-  //   DonationRequest({}).then((res) => {
-  //     setData(res.data);
-  //   });
-  // }, [flag]);
 
   return (
     <>
@@ -143,20 +123,12 @@ export const Products = () => {
                   placeholder="Category"
                   onChange={handleChange}
                 >
-                  <option value="Education">Education</option>
-                  <option value="Medical">Medical</option>
-                  <option value="Food">Food</option>
-                  <option value="Pure Water">Water</option>
+                  <option value="asian">Asian</option>
+                  <option value="italian">Italian</option>
+                  <option value="middle eastern">Middle Eastern</option>
+                  <option value="spicy mexican">Spicy mexican</option>
                 </Select>
-                <Input
-                  variant="flushed"
-                  borderBottom={"1px solid black"}
-                  placeholder="Goal"
-                  type="number"
-                  name="goal"
-                  value={newRecipes.goal}
-                  onChange={handleChange}
-                />
+               
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
@@ -166,13 +138,40 @@ export const Products = () => {
                   value={newRecipes.image}
                   onChange={handleChange}
                 />
+                 <Input
+                  variant="flushed"
+                  borderBottom={"1px solid black"}
+                  placeholder="Ingredient number"
+                  type="number"
+                  name="ingredient_number"
+                  value={newRecipes.ingredient_number}
+                  onChange={handleChange}
+                />
+                  <Input
+                  variant="flushed"
+                  borderBottom={"1px solid black"}
+                  placeholder="Ingredient List"
+                  type="text"
+                  name="ingredient_list"
+                  value={newRecipes.ingredient_list}
+                  onChange={handleChange}
+                />
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
-                  placeholder="Description"
+                  placeholder="Serving"
                   type="text"
-                  name="description"
-                  value={newRecipes.description}
+                  name="serving"
+                  value={newRecipes.serving}
+                  onChange={handleChange}
+                />
+                <Input
+                  variant="flushed"
+                  borderBottom={"1px solid black"}
+                  placeholder="Instructions"
+                  type="text"
+                  name="instructions"
+                  value={newRecipes.instructions}
                   onChange={handleChange}
                 />
 
@@ -214,6 +213,10 @@ export const Products = () => {
                   name="title"
                   value={newRecipes1.title}
                   onChange={handleChange1}
+                  marginBottom={4}
+                  alignItems={"center"}
+                  fontSize={"16px"}
+                  justifyContent={"center"}
                 />
 
                 <Select
@@ -224,20 +227,12 @@ export const Products = () => {
                   placeholder="Category"
                   onChange={handleChange1}
                 >
-                  <option value="Education">Education</option>
-                  <option value="Medical">Medical</option>
-                  <option value="Food">Food</option>
-                  <option value="Pure Water">Water</option>
+                  <option value="asian">Asian</option>
+                  <option value="italian">Italian</option>
+                  <option value="middle eastern">Middle Eastern</option>
+                  <option value="spicy mexican">Spicy mexican</option>
                 </Select>
-                <Input
-                  variant="flushed"
-                  borderBottom={"1px solid black"}
-                  placeholder="Goal"
-                  type="number"
-                  name="goal"
-                  value={newRecipes1.goal}
-                  onChange={handleChange1}
-                />
+               
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
@@ -247,16 +242,42 @@ export const Products = () => {
                   value={newRecipes1.image}
                   onChange={handleChange1}
                 />
+                 <Input
+                  variant="flushed"
+                  borderBottom={"1px solid black"}
+                  placeholder="Ingredient number"
+                  type="number"
+                  name="ingredient_number"
+                  value={newRecipes1.ingredient_number}
+                  onChange={handleChange1}
+                />
+                  <Input
+                  variant="flushed"
+                  borderBottom={"1px solid black"}
+                  placeholder="Ingredient List"
+                  type="text"
+                  name="ingredient_list"
+                  value={newRecipes1.ingredient_list}
+                  onChange={handleChange1}
+                />
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
-                  placeholder="Description"
+                  placeholder="Serving"
                   type="text"
-                  name="description"
-                  value={newRecipes1.description}
+                  name="serving"
+                  value={newRecipes1.serving}
                   onChange={handleChange1}
                 />
-
+                <Input
+                  variant="flushed"
+                  borderBottom={"1px solid black"}
+                  placeholder="Instructions"
+                  type="text"
+                  name="instructions"
+                  value={newRecipes1.instructions}
+                  onChange={handleChange1}
+                />
                 <Button
                   fontSize="16"
                   w="90%"
@@ -282,7 +303,6 @@ export const Products = () => {
             mt={"30px"}
             spacing={10}
             columns={[1, 2, 3]}
-            // m={"80px auto"}
             w={"100%"}
           >
             {data?.map((el) => (
@@ -300,6 +320,4 @@ export const Products = () => {
   );
 };
 
-// const DIV = styled.div`
-//   // Your styles here
-// `;
+

@@ -11,10 +11,10 @@ const Dashboard = () => {
 
   const [ChartGlobalData, setData] = useState([
     ["Category", "Goal", "Raised"],
-    ["Medical Care", 1000, 400],
-    ["Healthy Food", 1170, 460],
-    ["Pure Water", 660, 1120],
-    ["Education", 1030, 540],
+    ["Asian", 1000, 400],
+    ["Italian", 1170, 460],
+    ["Middle Eastern", 660, 1120],
+    ["Spicy mexican", 1030, 540],
   ]);
   const [baroptions, setOptions] = useState({
     chart: {
@@ -40,13 +40,11 @@ const Dashboard = () => {
     <div>
       <h1 style={{ textAlign: "center" }}>Dashboard</h1>
       <Grid
-        templateRows="repeat(2, 1fr)"
-        // templateColumns="repeat(2, 1fr)"
         templateColumns={{base:"repeat(1, 1fr)", md:"repeat(1, 1fr)", lg:"repeat(2, 1fr)"}}
         gap={4}
       >
         <GridItem
-          // h="320px"
+         
           p="1%"
           colSpan={[1, 1, 1]}
           bg="lightgrey"
@@ -79,7 +77,7 @@ const Dashboard = () => {
             options={baroptions}
           />
 
-          {/* <h6 style={{ textAlign: "center" }}>Bar</h6> */}
+      
         </GridItem>
 
         {/* ====================  Pie chart  =============== */}
@@ -96,7 +94,7 @@ const Dashboard = () => {
             width={"100%"}
             height={"100%"}
           />
-          {/* <h6 style={{ textAlign: "center" }}>Pie</h6> */}
+         
         </GridItem>
 
         {/* ======================  line chart  ============== */}
@@ -113,7 +111,7 @@ const Dashboard = () => {
             data={ChartGlobalData}
             options={lineOPtions}
           />
-          {/* <h6 style={{ textAlign: "center" }}>Line</h6> */}
+        
         </GridItem>
       </Grid>
     </div>
