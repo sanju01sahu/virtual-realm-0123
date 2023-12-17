@@ -18,7 +18,9 @@ const initState = {
   isLoading: false,
   isError: false,
   userData: {},
+  token: Cookies.get("login-token") || "",
 };
+
 const userReducer = (state = initState, action) => {
   const { type, payload } = action;
   switch (type) {
