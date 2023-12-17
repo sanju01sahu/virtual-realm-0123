@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
-const {BlacklistModel} = require("../models/blacklist.model");
+const { BlacklistModel } = require("../models/blacklist.model");
 
 const auth = async (req, res, next) => {
   try {
-    // const token = req.headers?.authorization?.split(" ")[1];
-    const token = req.cookies.token
+    const token = req.headers?.authorization?.split(" ")[1];
+    // const token = req.cookies.token
     if (token) {
       let checkToken = await BlacklistModel.find({ token });
       if (checkToken.length > 0) {
@@ -15,7 +15,7 @@ const auth = async (req, res, next) => {
       req.body.id = decrypt.id;
       return next();
     } else {
-      return res.status(400).send({"msg":"Please login again"});
+      return res.status(400).send({ msg: "Please login again" });
     }
   } catch (error) {
     return res.status(400).send({ error: error });
@@ -23,5 +23,5 @@ const auth = async (req, res, next) => {
 };
 
 module.exports = {
-  auth
+  auth,
 };
