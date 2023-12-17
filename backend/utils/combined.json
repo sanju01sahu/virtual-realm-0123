@@ -3,6 +3,7 @@
         "image": [
             "https://www.joyousapron.com/wp-content/uploads/2021/03/Mee-Goreng-Sq-2.jpg"
         ],
+        "price": "120",
         "category": "Asian",
         "title": "Mee Goreng (Fried Noodles Indian-Style)",
         "ingredients": [
@@ -32,6 +33,7 @@
         "image": [
             "https://cdn.tarladalal.com/members/9306/big/big_chapati_rolls_stuffed_with_spicy_potatoes-16861.jpg"
         ],
+        "price": "200",
         "title": "Chapati with Spicy Potato Filling (Indian)",
         "category": "Asian",
         "ingredients": [
@@ -55,6 +57,7 @@
         "image": [
             "https://www.beyondthechickencoop.com/wp-content/uploads/2021/06/Grilled-Flatbread.jpg"
         ],
+        "price": "180",
         "title": "Indian Griddle Fried Flat Bread",
         "category": "Asian",
         "ingredients": [
@@ -71,6 +74,7 @@
         "image": [
             "https://everydangdish.com/wp-content/uploads/2020/05/Gujarati-Indian-Potatoes12.jpg"
         ],
+        "price": "150",
         "title": "Gujarati Potatoes Indian",
         "category": "Asian",
         "ingredients": [
@@ -90,6 +94,7 @@
         "image": [
             "https://media.istockphoto.com/id/878180648/photo/desi-pure-ghee-or-clarified-butter-in-glass-or-copper-container-with-spoon-selective-focus.jpg?s=612x612&w=0&k=20&c=gkjFRt3nwUbnK-bB3108rtN6pLrHA_nGDlRCm_ZI2l0="
         ],
+        "price": "220",
         "title": "Ghee (Indian Butter Oil)",
         "category": "Asian",
         "ingredients": [
@@ -137,6 +142,7 @@
         "image": [
             "https://1.bp.blogspot.com/-HjpyGGuSZ9E/XuPDiipt4II/AAAAAAAAQ68/QR2c_6aN-wgTTGZv8mTUjFiLIHL-d45lACNcBGAsYHQ/w1200-h630-p-k-no-nu/Sothi%2BKuzhambu.JPG"
         ],
+        "price": "300",
         "title": "Sothi (South Indian)",
         "category": "Asian",
         "ingredients": [
@@ -169,6 +175,7 @@
         "image": [
             "https://static.emerils.com/Calzone%20for%20web.jpg"
         ],
+        "price": "280",
         "title": "Fresh Mozzarella, Italian Sausage and Roasted Pepper Calzon",
         "category": "Italian",
         "ingredients": [
@@ -194,6 +201,7 @@
         "image": [
             "https://kfoods.com/images1/newrecipeicon/italian-style-chicken-breasts_2964.jpg"
         ],
+        "price": "220",
         "title": "Microwave Chicken Breasts Italian",
         "category": "Italian",
         "ingredients": [
@@ -215,6 +223,7 @@
         "image": [
             "https://static.onecms.io/wp-content/uploads/sites/19/2004/07/07/chicken-herb-rs-663029-x.jpg"
         ],
+        "price": "280",
         "title": "Chicken with Italian Herbs and Vegetables",
         "category": "Italian",
         "ingredients": [
@@ -237,6 +246,7 @@
         "image": [
             "https://upload.wikimedia.org/wikipedia/commons/2/2c/Buona_Chicago%27s_Original_Italian_Beef.jpg"
         ],
+        "price": "240",
         "title": "Chicago Italian Beef Sandwiches",
         "category": "Italian",
         "ingredients": [
@@ -268,6 +278,7 @@
         "image": [
             "https://oursaltykitchen.com/wp-content/uploads/2020/04/italian-potato-salad-featured-image.jpg"
         ],
+        "price": "290",
         "title": "Vlf Italian Potato Salad",
         "category": "Italian",
         "ingredients": [
@@ -288,6 +299,7 @@
         "image": [
             "https://posustainableseafood.com/wp-content/uploads/2021/05/ourcatch_montalcino_1500sq-e1629926270701.jpg"
         ],
+        "price": "150",
         "title": "Halibut Italiano",
         "category": "Italian",
         "ingredients": [
@@ -305,6 +317,7 @@
         "image": [
             "https://seitanbeatsyourmeat.com/wp-content/uploads/2020/05/chicago-style-giardiniera-recipe.jpg"
         ],
+        "price": "180",
         "title": "Giardiniera #5 - Italian",
         "category": "Italian",
         "ingredients": [
@@ -327,6 +340,7 @@
         "image": [
             "https://thewanderlustkitchen.com/wp-content/uploads/2013/11/Quick-Crockpot-Fondue-square-1200.jpg"
         ],
+        "price": "220",
         "title": "Crockpot Fondue Italiano",
         "category": "Italian",
         "ingredients": [
@@ -345,6 +359,7 @@
         "image": [
             "https://www.fromvalerieskitchen.com/wordpress/wp-content/uploads/2021/10/Crock-Pot-Italian-Beef-Sandwiches-07.jpg"
         ],
+        "price": "300",
         "title": "Crockpot Italian Beef #1",
         "category": "Italian",
         "ingredients": [
@@ -362,6 +377,7 @@
         "image": [
             "https://www.joyousapron.com/wp-content/uploads/2021/03/Mee-Goreng-Sq-2.jpg"
         ],
+        "price": "210",
         "category": "Asian",
         "title": "Mee Goreng (Fried Noodles Indian-Style)",
         "ingredients": [
@@ -391,6 +407,7 @@
         "image": [
             "https://cdn.tarladalal.com/members/9306/big/big_chapati_rolls_stuffed_with_spicy_potatoes-16861.jpg"
         ],
+        "price": "250",
         "title": "Chapati with Spicy Potato Filling (Indian)",
         "category": "Asian",
         "ingredients": [
@@ -414,6 +431,7 @@
         "image": [
             "https://www.beyondthechickencoop.com/wp-content/uploads/2021/06/Grilled-Flatbread.jpg"
         ],
+        "price": "220",
         "title": "Chipati (Indian Griddle Fried Flat Bread)",
         "category": "Asian",
         "ingredients": [
@@ -430,6 +448,7 @@
         "image": [
             "https://everydangdish.com/wp-content/uploads/2020/05/Gujarati-Indian-Potatoes12.jpg"
         ],
+        "price": "120",
         "title": "Gujarati Potatoes Indian",
         "category": "Asian",
         "ingredients": [
@@ -449,6 +468,7 @@
         "image": [
             "https://media.istockphoto.com/id/878180648/photo/desi-pure-ghee-or-clarified-butter-in-glass-or-copper-container-with-spoon-selective-focus.jpg?s=612x612&w=0&k=20&c=gkjFRt3nwUbnK-bB3108rtN6pLrHA_nGDlRCm_ZI2l0="
         ],
+        "price": "170",
         "title": "Ghee (Indian Butter Oil)",
         "category": "Asian",
         "ingredients": [
@@ -461,6 +481,7 @@
         "image": [
             "https://jehancancook.com/wp-content/uploads/2011/12/IMG_0585-1440x1067.jpg"
         ],
+        "price": "180",
         "title": "Christmas Cake West Indian Style",
         "category": "Asian",
         "ingredients": [
@@ -496,6 +517,7 @@
         "image": [
             "https://1.bp.blogspot.com/-HjpyGGuSZ9E/XuPDiipt4II/AAAAAAAAQ68/QR2c_6aN-wgTTGZv8mTUjFiLIHL-d45lACNcBGAsYHQ/w1200-h630-p-k-no-nu/Sothi%2BKuzhambu.JPG"
         ],
+        "price": "200",
         "title": "Sothi (South Indian)",
         "category": "Asian",
         "ingredients": [
@@ -528,6 +550,7 @@
         "image": [
             "https://static.emerils.com/Calzone%20for%20web.jpg"
         ],
+        "price": "240",
         "title": "Fresh Mozzarella, Italian Sausage and Roasted Pepper Calzon",
         "category": "Italian",
         "ingredients": [
@@ -553,6 +576,7 @@
         "image": [
             "https://kfoods.com/images1/newrecipeicon/italian-style-chicken-breasts_2964.jpg"
         ],
+        "price": "260",
         "title": "Microwave Chicken Breasts Italian",
         "category": "Italian",
         "ingredients": [
@@ -574,6 +598,7 @@
         "image": [
             "https://static.onecms.io/wp-content/uploads/sites/19/2004/07/07/chicken-herb-rs-663029-x.jpg"
         ],
+        "price": "290",
         "title": "Chicken with Italian Herbs and Vegetables",
         "category": "Italian",
         "ingredients": [
@@ -596,6 +621,7 @@
         "image": [
             "https://upload.wikimedia.org/wikipedia/commons/2/2c/Buona_Chicago%27s_Original_Italian_Beef.jpg"
         ],
+        "price": "150",
         "title": "Chicago Italian Beef Sandwiches",
         "category": "Italian",
         "ingredients": [
@@ -627,6 +653,7 @@
         "image": [
             "https://oursaltykitchen.com/wp-content/uploads/2020/04/italian-potato-salad-featured-image.jpg"
         ],
+        "price": "290",
         "title": "Vlf Italian Potato Salad",
         "category": "Italian",
         "ingredients": [
@@ -647,6 +674,7 @@
         "image": [
             "https://posustainableseafood.com/wp-content/uploads/2021/05/ourcatch_montalcino_1500sq-e1629926270701.jpg"
         ],
+        "price": "300",
         "title": "Halibut Italiano",
         "category": "Italian",
         "ingredients": [
@@ -664,6 +692,7 @@
         "image": [
             "https://seitanbeatsyourmeat.com/wp-content/uploads/2020/05/chicago-style-giardiniera-recipe.jpg"
         ],
+        "price": "200",
         "title": "Giardiniera #5 - Italian",
         "category": "Italian",
         "ingredients": [
@@ -686,6 +715,7 @@
         "image": [
             "https://thewanderlustkitchen.com/wp-content/uploads/2013/11/Quick-Crockpot-Fondue-square-1200.jpg"
         ],
+        "price": "220",
         "title": "Crockpot Fondue Italiano",
         "category": "Italian",
         "ingredients": [
@@ -704,6 +734,7 @@
         "image": [
             "https://www.fromvalerieskitchen.com/wordpress/wp-content/uploads/2021/10/Crock-Pot-Italian-Beef-Sandwiches-07.jpg"
         ],
+        "price": "250",
         "title": "Crockpot Italian Beef #1",
         "category": "Italian",
         "ingredients": [
