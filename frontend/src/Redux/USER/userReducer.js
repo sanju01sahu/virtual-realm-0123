@@ -8,13 +8,17 @@ import {
   USER_EXISTS,
   USER_LOGOUT,
   USER_NOT_EXISTS,
+  USER_SIGNUP_FAILED,
+  USER_SIGNUP_LOADING,
+  USER_SIGNUP_SUCCESS,
 } from "../actionType";
 
 const login_token = Cookies.get("login-token") || "";
 
 const initState = {
   isAuth: login_token ? true : false,
-  message: "",
+  loginMessage: "Please login to browse smoothly",
+  registerMessage: "Sign up to become a valuable customer",
   isLoading: false,
   isError: false,
   userData: {},
@@ -39,16 +43,35 @@ const userReducer = (state = initState, action) => {
       };
     }
     case USER_LOGOUT: {
-      return { ...state, isAuth: false, userData: {} };
+      return {
+        ...state,
+        isAuth: false,
+        userData: {},
+        loginMessage: "Please login to browse smoothly",
+        token: "",
+      };
     }
     case USER_NOT_EXISTS: {
-      return { ...state, message: payload };
+      return { ...state, loginMessage: payload };
     }
     case USER_EXISTS: {
-      return { ...state, message: payload };
+      return { ...state, loginMessage: payload };
     }
     case REMOVE_MESSAGE: {
-      return { ...state, message: "" };
+      return { ...state, loginMessage: "" };
+    }
+    case USER_SIGNUP_LOADING: {
+      return { ...state, isLoading: true };
+    }
+    case USER_SIGNUP_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        registerMessage: payload,
+      };
+    }
+    case USER_SIGNUP_FAILED: {
+      return { ...state, isLoading: false, registerMessage: payload };
     }
     default:
       return state;

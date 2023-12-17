@@ -1,10 +1,11 @@
-const express=require("express");
-const {RecipeModel}=require("../models/recipe.model");
-const recipeRouter=express.Router();
+const express = require("express");
+const { RecipeModel } = require("../models/recipe.model");
+const recipeRouter = express.Router();
 
 // recipeRouter.use(limiter);
 
 recipeRouter.get("/", async (req, res) => {
+
     const {userID} = req.body;
     if(userID){
         delete req.body.userID;
@@ -45,16 +46,18 @@ recipeRouter.get("/", async (req, res) => {
 });
 
 
-recipeRouter.post("/newRecipe",async(req,res)=>{
-    try{
-        let newRecipe=req.body;
-        let saveRecipe=new RecipeModel(newRecipe);
-        await saveRecipe.save();
-         res.status(200).send({"msg":"Recipe added"});
-    }catch(err){
-        res.status(400).send({"error":err.message})
-    }
+
+recipeRouter.post("/newRecipe", async (req, res) => {
+  try {
+    let newRecipe = req.body;
+    let saveRecipe = new RecipeModel(newRecipe);
+    await saveRecipe.save();
+    res.status(200).send({ msg: "Recipe added" });
+  } catch (err) {
+    res.status(400).send({ error: err.message });
+  }
 });
+
 
 recipeRouter.patch("/updateRecipe/:id",async(req,res)=>{
     try{
@@ -69,15 +72,24 @@ recipeRouter.patch("/updateRecipe/:id",async(req,res)=>{
     }
 })
 
-recipeRouter.delete("/deleteRecipe/:id",async(req,res)=>{
-     try{
-           let {id}=req.params;
-           await RecipeModel.findByIdAndDelete({_id:id});
-           res.status(200).send({"message":"post deleted"})
-     }catch(err){
-        res.status(400).send({"error":err.message});
-     }
-})
-module.exports={
-    recipeRouter
-}
+
+    await RecipeModel.findOneAndUpdate({ _id: id }, updateFields);
+    let updatedRecipe = await RecipeModel.find({ _id: id });
+    res.status(200).send({ msg: "recipe updated", data: updatedRecipe });
+  } catch (err) {
+    res.status(400).send({ error: err.message });
+  }
+});
+
+recipeRouter.delete("/deleteRecipe/:id", async (req, res) => {
+  try {
+    let { id } = req.params;
+    await RecipeModel.findByIdAndDelete({ _id: id });
+    res.status(200).send({ message: "post deleted" });
+  } catch (err) {
+    res.status(400).send({ error: err.message });
+  }
+});
+module.exports = {
+  recipeRouter,
+};

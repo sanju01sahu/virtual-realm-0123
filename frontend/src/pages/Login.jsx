@@ -38,7 +38,10 @@ const Login = () => {
   };
 
   useEffect(() => {
-    console.log(user.message, "userdata from store");
+    // console.log(
+    //   user,
+    //   "================================================================user from store"
+    // );
   }, [user]);
   return (
     <>
@@ -104,7 +107,7 @@ const Login = () => {
                 style={{ textAlign: "center", fontSize: "20px" }}
                 to="/signup"
               >
-                <h2>Don't have an account? </h2>
+                <h2>Don't have an account? Sign up </h2>
               </Link>
             </Box>
             {user.isAuth ? (
@@ -115,18 +118,23 @@ const Login = () => {
             ) : (
               <Alert
                 status={
-                  user.message == "User Not Found, Please Register"
+                  user.loginMessage == "User Not Found, Please Register"
                     ? "error"
                     : "info"
                 }
                 variant="solid"
               >
                 <AlertIcon />
-                {user.message} <br />
+                {user.loginMessage === "" ? (
+                  <h1>"Please login to browse smoothly"</h1>
+                ) : (
+                  user.loginMessage
+                )}{" "}
+                <br />
                 {"   "}
-                <Link style={{ paddingLeft: "10px" }} to="/signup">
+                {/* <Link style={{ paddingLeft: "10px" }} to="/signup">
                   Click here to register
-                </Link>
+                </Link> */}
               </Alert>
             )}
           </GridItem>
