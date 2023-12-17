@@ -36,9 +36,7 @@ import { useEffect, useState } from "react";
 import Dashboard from "../Pages/Dashboard";
 import AdminUsers from "../Pages/AdminUsers";
 import AdminCategories from "../Pages/AdminCategories";
-import AdminEvents from "../Pages/AdminEvents";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import AdminSettings from "../Pages/AdminManage";
 import UserByAdmin from "../Pages/UserByAdmin";
 import AdminProfile from "../Pages/AdminProfile";
 
@@ -270,8 +268,6 @@ const AdminNavbar = () => {
         {params.get("path") === "/admin/dashboard/" && <Dashboard />}
         {params.get("path") === "/admin/users/" && <AdminUsers />}
         {params.get("path") === "/admin/category/" && <AdminCategories />}
-        {params.get("path") === "/admin/events/" && <AdminEvents />}
-        {params.get("path") === "/admin/settings/" && <AdminSettings />}
         {params.get("path").split("/")[3] === "singleUser" && (
           <UserByAdmin id={params.get("path").split("/")[4]} />
         )}
