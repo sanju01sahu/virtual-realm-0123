@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Button, Flex, IconButton, Spacer } from "@chakra-ui/react";
 
 import {
@@ -19,10 +19,38 @@ import {
   LockIcon,
   RepeatIcon,
 } from "@chakra-ui/icons";
+import Cookies from "js-cookie";
 import { Link, useLocation, useParams } from "react-router-dom";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import userReducer from "../Redux/USER/userReducer";
+import { removeMessage, userLogout } from "../Redux/USER/userAction";
+
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const isAuth = useSelector((store) => {
+    return store.userReducer.isAuth;
+  }, shallowEqual);
+  const user = useSelector((store) => {
+    return store.userReducer.userData;
+  }, shallowEqual);
+  // const msg = useSelector((store) => {
+  //   return store.userReducer.message;
+  // });
+  useEffect(() => {
+    // console.log(isAuth, "from navbar");
+    console.log(user);
+  }, [isAuth]);
   let url = useLocation().pathname;
-  console.log(url);
+  // console.log(url);
+
+  const handleLogout = () => {
+    dispatch(userLogout());
+  };
+
+  const removeMSG = () => {
+    dispatch(removeMessage());
+  };
+
   return (
     <div>
       <Flex
@@ -79,17 +107,43 @@ const Navbar = () => {
             </Link>
           </Box>
         </Box>
-
-        <Box>
-          <Link to="/login">
+        {user.role == "admin" && (
+          <Link to="/admin">
             <Button
               mr={"20px"}
-              bg={"#87CBB9"}
-              display={{ base: "none", lg: "flex" }}
+              bg={"#e28153"}
+              _hover={"#000000"}
+              // display={{ base: "none", lg: "flex" }}
             >
-              Login
+              Dashboard
             </Button>
           </Link>
+        )}
+        <Box>
+          {isAuth ? (
+            <Link to="/">
+              <Button
+                mr={"20px"}
+                bg={"#dd5c21"}
+                _hover={"#e08e69"}
+                display={{ base: "none", lg: "flex" }}
+                onClick={() => handleLogout()}
+              >
+                Logout
+              </Button>{" "}
+            </Link>
+          ) : (
+            <Link to="/login">
+              <Button
+                mr={"20px"}
+                bg={"#87CBB9"}
+                display={{ base: "none", lg: "flex" }}
+                onClick={() => removeMSG()}
+              >
+                Login
+              </Button>
+            </Link>
+          )}
 
           <Menu>
             <MenuButton

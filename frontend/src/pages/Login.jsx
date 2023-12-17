@@ -5,16 +5,41 @@ import {
   Grid,
   GridItem,
 } from "@chakra-ui/layout";
-import React, { useState } from "react";
-import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+  Alert,
+  AlertIcon,
+  Button,
+  Input,
+  InputGroup,
+  InputRightElement,
+} from "@chakra-ui/react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import setCookie from "../../utils/setCooke";
+import Cookies from "js-cookie";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { userLogin, userLogout } from "../Redux/USER/userAction";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((store) => {
+    return store.userReducer;
+  }, shallowEqual);
   const [show, setShow] = useState(false);
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const navigate = useNavigate();
   const handleClick = () => setShow(!show);
 
+  const handleLogin = (e) => {
+    dispatch(userLogin({ email, pass }));
+  };
+
+  useEffect(() => {
+    console.log(user.message, "userdata from store");
+  }, [user]);
   return (
     <>
       <Navbar />
@@ -32,7 +57,10 @@ const Login = () => {
             <h1 style={{ textAlign: "center", fontSize: "30px" }}>Login</h1>
             <br />
             <Box w="70%" m={"auto"}>
-              <Input placeholder="email" />
+              <Input
+                placeholder="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <br />
               <br />
               <InputGroup size="md">
@@ -40,6 +68,7 @@ const Login = () => {
                   pr="4.5rem"
                   type={show ? "text" : "password"}
                   placeholder="Enter password"
+                  onChange={(e) => setPass(e.target.value)}
                 />
                 <InputRightElement width="4.5rem">
                   <Button
@@ -54,7 +83,11 @@ const Login = () => {
               </InputGroup>
               <br />
               <br />
-              <Button w={"100%"} colorScheme="teal">
+              <Button
+                w={"100%"}
+                colorScheme="teal"
+                onClick={() => handleLogin()}
+              >
                 Login
               </Button>
               <br />
@@ -67,13 +100,35 @@ const Login = () => {
                 </AbsoluteCenter>
               </Box>
 
-              <Link style={{ textAlign: "center" }} to="/signup">
-                <h2>
-                  Don't have an account?{" "}
-                  <span style={{ textDecoration: "underline" }}>Sign up</span>
-                </h2>
+              <Link
+                style={{ textAlign: "center", fontSize: "20px" }}
+                to="/signup"
+              >
+                <h2>Don't have an account? </h2>
               </Link>
             </Box>
+            {user.isAuth ? (
+              <Alert status="success" variant="solid">
+                <AlertIcon />
+                Login Successfull !<Link to="/">Click here to go Home</Link>
+              </Alert>
+            ) : (
+              <Alert
+                status={
+                  user.message == "User Not Found, Please Register"
+                    ? "error"
+                    : "info"
+                }
+                variant="solid"
+              >
+                <AlertIcon />
+                {user.message} <br />
+                {"   "}
+                <Link style={{ paddingLeft: "10px" }} to="/signup">
+                  Click here to register
+                </Link>
+              </Alert>
+            )}
           </GridItem>
 
           <GridItem h={"300px"} bg={""}>
