@@ -5,15 +5,48 @@ import {
   Grid,
   GridItem,
 } from "@chakra-ui/layout";
-import React, { useState } from "react";
-import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import {
+  Alert,
+  AlertIcon,
+  Button,
+  Input,
+  InputGroup,
+  InputRightElement,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+
 const Signup = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((store) => {
+    return store.userReducer;
+  }, shallowEqual);
   const [show, setShow] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
   const handleClick = () => setShow(!show);
 
+  const handleRegister = () => {
+    console.log({ name, email, pass });
+    // fetch(`http://localhost:8080/users/register`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "Application/json",
+    //   },
+    //   body: JSON.stringify({ name: name, email: email, password: pass }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => console.log(data))
+    //   .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    console.log("from signup", user);
+  }, [user]);
   return (
     <>
       <Navbar />
@@ -31,10 +64,16 @@ const Signup = () => {
             <h1 style={{ textAlign: "center", fontSize: "30px" }}>Sign Up</h1>
             <br />
             <Box w="70%" m={"auto"}>
-              <Input placeholder="Username" />
+              <Input
+                placeholder="Username"
+                onChange={(e) => setName(e.target.value)}
+              />
               <br />
               <br />
-              <Input placeholder="email" />
+              <Input
+                placeholder="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <br />
               <br />
               <InputGroup size="md">
@@ -42,6 +81,7 @@ const Signup = () => {
                   pr="4.5rem"
                   type={show ? "text" : "password"}
                   placeholder="Enter password"
+                  onChange={(e) => setPass(e.target.value)}
                 />
                 <InputRightElement width="4.5rem">
                   <Button
@@ -56,7 +96,11 @@ const Signup = () => {
               </InputGroup>
               <br />
               <br />
-              <Button w={"100%"} colorScheme="teal">
+              <Button
+                w={"100%"}
+                colorScheme="teal"
+                onClick={(e) => handleRegister()}
+              >
                 Login
               </Button>
               <br />
@@ -76,6 +120,28 @@ const Signup = () => {
                 </h2>
               </Link>
             </Box>
+            {user.isAuth ? (
+              <Alert status="success" variant="solid">
+                <AlertIcon />
+                Login Successfull !<Link to="/">Click here to go Home</Link>
+              </Alert>
+            ) : (
+              <Alert
+                status={
+                  user.message == "User Not Found, Please Register"
+                    ? "error"
+                    : "info"
+                }
+                variant="solid"
+              >
+                <AlertIcon />
+                {user.message} <br />
+                {"   "}
+                <Link style={{ paddingLeft: "10px" }} to="/signup">
+                  Click here to register
+                </Link>
+              </Alert>
+            )}
           </GridItem>
 
           <GridItem h={"300px"} bg={""}>
