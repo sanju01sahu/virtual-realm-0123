@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem, Heading } from "@chakra-ui/react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { Chart } from "react-google-charts";
@@ -38,7 +38,12 @@ const Dashboard = () => {
   };
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Dashboard</h1>
+      <Heading textAlign={"center"}
+                fontSize={{ base: "30px", md: "30px", lg: "35px" }}
+                pb="15px"
+                >
+                  Dashboard
+                  </Heading>
       <Grid
         templateColumns={{base:"repeat(1, 1fr)", md:"repeat(1, 1fr)", lg:"repeat(2, 1fr)"}}
         gap={4}

@@ -14,10 +14,17 @@ const CartPage = () => {
      */
     const [qty, setQyt] = useState(1);
     const [total, setTotal] = useState(1)
-
+  
+  
     const quantityAdd = (val) => {
-        setQyt((prev) => prev + val)
-    }
+        setQyt((prev)=> prev+val)
+             setTotal(total=>{
+                return total = qty*100
+             })
+            }
+     let discount = total>1000 ? (total-(total*0.1)):total;
+            
+            localStorage.setItem("totalAmount",discount)
 
     const data = [
         {
@@ -80,13 +87,13 @@ const CartPage = () => {
                     <hr />
                     <Box>
 
-                        {total > 1000 ? <Flex justifyContent={"space-evenly"}><Text color={"green"}>10% New Year</Text><Text>-{total * 0.1}₹</Text></Flex> : ""}
+                        {total > 1000 ? <Flex justifyContent={"space-evenly"}><Text color={"green"}>10% New Year</Text><Text>-{discount}₹</Text></Flex> : ""}
                     </Box>
                     <br />
                     <hr />
                     <Flex justifyContent={"space-evenly"}>
                         <Heading>Total: </Heading>
-                        <Heading>{total} </Heading>
+                        <Heading>{discount} </Heading>
 
                     </Flex>
                     <br />
