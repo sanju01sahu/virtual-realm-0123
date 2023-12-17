@@ -41,7 +41,7 @@ userRouter.post("/login", async (req, res) => {
             { useID: loginUser["_id"], role: loginUser.role },
             "masai",
             {
-              expiresIn: 3600000,
+              expiresIn: 3600000,//one hour
             }
           );
           //  res.cookie("token",token);
