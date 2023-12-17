@@ -80,9 +80,14 @@ const Checkout = () => {
             <Box h={"50px"} bg={""}>
               <Text
                 textAlign={"center"}
-                fontSize={{ base: "20px", md: "20px", lg: "25px" }}
+                fontSize={{ base: "30px", md: "30px", lg: "35px" }}
+                color={"white"}
+                fontWeight={"500"}
+                borderRadius={"10px"}
+                bg="teal"
+                py="7px"
               >
-                Total Amount : Rs.0
+                Total Amount :{localStorage.getItem("totalAmount")}₹
               </Text>
             </Box>
           </GridItem>
@@ -115,7 +120,7 @@ const Checkout = () => {
                   </TabList>
                   <TabPanels>
                     <TabPanel>
-                      <Box bg={"white"} p={"15px"}>
+                      <Box bg={"white"} p={"15px"}  borderRadius="10px">
                         <Text
                           color={"gray"}
                           fontSize={"20px"}

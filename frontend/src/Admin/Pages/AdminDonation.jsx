@@ -9,18 +9,22 @@ import {
   SimpleGrid,
   Stack,
   Text,
+  Textarea,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import AdminProductCard from "../Components/AdminPRoductCard";
+
+
 
 export const Products = () => {
   const initRecipe = {
     title: "",
     image: "",
     category: "",
-    ingredient_number:0,
-    ingredient_list:"",
-    serving:0,
-    instructions:"",
+    price: 0,
+    ingredients: "",
+    servings: "",
+    instructions: "",
   };
   let newRecipe;
   let [newRecipes, setnewRecipes] = useState(initRecipe);
@@ -39,40 +43,91 @@ export const Products = () => {
       ...newRecipes1,
       [e.target.name]: e.target.value,
     };
+    // console.log(newRecipe1)
     setnewRecipes1(newRecipe1);
   };
 
-  let Navigate = useNavigate();
-  const [data, setData] = useState([]);
-  const [flag, setFlag] = useState(false);
+  const [recipeData, setrecipeData] = useState([]);
 
-  const AddProduct = (e) => {
+
+
+  const recipesList= ()=>{
+    fetch(`http://localhost:8080/recipe`).then((res)=>res.json()).then((data)=>{
+      // console.log(data.data);
+      setrecipeData(data.data);
+    })
+  }
+
+  useEffect(()=>{
+    recipesList()
+  },[])
+
+  
+  const  AddRecipes = async (e) => {
     e.preventDefault();
+    try {
+      let res = await fetch("http://localhost:8080/recipe/newRecipe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
 
-   
-      setData([...data, newRecipes]);
+        },
+        body: JSON.stringify(newRecipes)
+      })
+      let data = await res.json();
+      recipesList();
+      console.log(data)
+    } catch (error) {
+      throw new Error(error)
+    }
     setnewRecipes(initRecipe);
   };
 
-  console.log(data)
+  // console.log(data)
   const handleEdit = (id) => {
-    DonationSingleRequest(id).then((res) => {
-      setnewRecipes1(res.data);
-    });
+    const editData = recipeData.filter((el)=>el._id==id)
+    setnewRecipes1(editData[0]);
+
   };
+
+  // console.log(newRecipes1)
   let ids = newRecipes1._id;
+// console.log(ids)
 
-  const EditProduct = () => {
-    PatchDonationRequest(ids, newRecipes1).then((res) => alert(res.data.msg));
+const EditProduct = async() => {
+    // console.log(typeof ids)
+    try {
+      
+     let res =await fetch(`http://localhost:8080/recipe/updateRecipe/${ids}`, {
+        method: "PATCH",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(newRecipes1)
+      })
+      let data = res.json();
+      console.log(data)
+      
+      recipesList();
+      setnewRecipes1(initRecipe)
+    } catch (error) {
+      throw new Error(error)
+    }
 
-    setnewRecipes1(initRecipe);
   };
-  const deleteProduct = (id) => {
-    console.log(id);
-    DeleteDonationRequest(id).then((res) => {
-      alert(res.data.msg);
-    });
-    setFlag(!flag);
+  const deleteProduct =  async (id) => {
+
+    try {
+      
+      await fetch(`http://localhost:8080/recipe/deleteRecipe/${id}`, {
+        method: "DELETE",
+       
+      })
+      recipesList();
+      
+    } catch (error) {
+      throw new Error(error)
+    }
   };
 
 
@@ -123,12 +178,12 @@ export const Products = () => {
                   placeholder="Category"
                   onChange={handleChange}
                 >
-                  <option value="asian">Asian</option>
-                  <option value="italian">Italian</option>
-                  <option value="middle eastern">Middle Eastern</option>
-                  <option value="spicy mexican">Spicy mexican</option>
+                  <option value="Asian">Asian</option>
+                  <option value="Italian">Italian</option>
+                  <option value="Middle eastern">Middle eastern</option>
+                  <option value="Spicy mexican">Spicy mexican</option>
                 </Select>
-               
+
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
@@ -138,31 +193,31 @@ export const Products = () => {
                   value={newRecipes.image}
                   onChange={handleChange}
                 />
-                 <Input
+                <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
                   placeholder="Ingredient number"
                   type="number"
-                  name="ingredient_number"
-                  value={newRecipes.ingredient_number}
+                  name="price"
+                  value={newRecipes.price}
                   onChange={handleChange}
                 />
-                  <Input
+                <Textarea
                   variant="flushed"
                   borderBottom={"1px solid black"}
                   placeholder="Ingredient List"
                   type="text"
-                  name="ingredient_list"
-                  value={newRecipes.ingredient_list}
+                  name="ingredients"
+                  value={newRecipes.ingredients}
                   onChange={handleChange}
                 />
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
-                  placeholder="Serving"
+                  placeholder="servings"
                   type="text"
-                  name="serving"
-                  value={newRecipes.serving}
+                  name="servings"
+                  value={newRecipes.servings}
                   onChange={handleChange}
                 />
                 <Input
@@ -187,7 +242,7 @@ export const Products = () => {
                   fontWeight={"300"}
                   color={"white"}
                   colorScheme="black"
-                  onClick={AddProduct}
+                  onClick={AddRecipes}
                 >
                   SUBMIT
                 </Button>
@@ -227,12 +282,12 @@ export const Products = () => {
                   placeholder="Category"
                   onChange={handleChange1}
                 >
-                  <option value="asian">Asian</option>
-                  <option value="italian">Italian</option>
-                  <option value="middle eastern">Middle Eastern</option>
-                  <option value="spicy mexican">Spicy mexican</option>
+                  <option value="Asian">Asian</option>
+                  <option value="Italian">Italian</option>
+                  <option value="Middle eastern">Middle eastern</option>
+                  <option value="Spicy mexican">Spicy mexican</option>
                 </Select>
-               
+
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
@@ -242,31 +297,31 @@ export const Products = () => {
                   value={newRecipes1.image}
                   onChange={handleChange1}
                 />
-                 <Input
+                <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
                   placeholder="Ingredient number"
                   type="number"
-                  name="ingredient_number"
-                  value={newRecipes1.ingredient_number}
+                  name="price"
+                  value={newRecipes1.price}
                   onChange={handleChange1}
                 />
-                  <Input
+                <Textarea
                   variant="flushed"
                   borderBottom={"1px solid black"}
                   placeholder="Ingredient List"
                   type="text"
-                  name="ingredient_list"
-                  value={newRecipes1.ingredient_list}
+                  name="ingredients"
+                  value={newRecipes1.ingredients}
                   onChange={handleChange1}
                 />
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
-                  placeholder="Serving"
+                  placeholder="servings"
                   type="text"
-                  name="serving"
-                  value={newRecipes1.serving}
+                  name="servings"
+                  value={newRecipes1.servings}
                   onChange={handleChange1}
                 />
                 <Input
@@ -305,9 +360,9 @@ export const Products = () => {
             columns={[1, 2, 3]}
             w={"100%"}
           >
-            {data?.map((el) => (
+            {recipeData?.map((el) => (
               <AdminProductCard
-                key={el.id}
+                key={el._id}
                 data={el}
                 deleteProduct={deleteProduct}
                 handleEdit={handleEdit}
