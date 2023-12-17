@@ -12,7 +12,7 @@ const auth = async (req, res, next) => {
       }
 
       let decrypt = jwt.verify(token, "masai");
-      req.body.id = decrypt.id;
+      req.body.userID = decrypt.userID;
       return next();
     } else {
       return res.status(400).send({ msg: "Please login again" });
