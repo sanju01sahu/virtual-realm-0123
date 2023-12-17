@@ -31,13 +31,11 @@ import {
   FiBell,
   FiChevronDown,
 } from "react-icons/fi";
-// import AdminRoutes from "../Routes/AdminRoutes";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Dashboard from "../Pages/Dashboard";
 import AdminUsers from "../Pages/AdminUsers";
 import AdminCategories from "../Pages/AdminCategories";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import UserByAdmin from "../Pages/UserByAdmin";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import AdminProfile from "../Pages/AdminProfile";
 
 const LinkItems = [
@@ -52,7 +50,7 @@ const LinkItems = [
 ];
 
 const SidebarContent = ({ setSearchParams, setlink, onClose, ...rest }) => {
-  const navigate = useNavigate();
+
   const handleButtonClick = (path) => {
     //
     setSearchParams({ path: path });
@@ -98,9 +96,7 @@ const SidebarContent = ({ setSearchParams, setlink, onClose, ...rest }) => {
 const NavItem = ({ icon, children, ...rest }) => {
   const [params, setSearchParams] = useSearchParams("" || { path: "/admin" });
 
-  const handleNav = (link) => {
-    console.log(link, children);
-  };
+
   return (
     <Box
       as="a"
@@ -132,7 +128,7 @@ const NavItem = ({ icon, children, ...rest }) => {
           />
         )}
         {children}
-        {/*  give appropriate click functionality and name */}
+      
       </Flex>
     </Box>
   );
@@ -173,12 +169,7 @@ const MobileNav = ({ setSearchParams, onOpen, ...rest }) => {
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
-        {/* <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-        /> */}
+    
         <Flex alignItems={"center"}>
           <Menu>
             <MenuButton
@@ -212,17 +203,7 @@ const MobileNav = ({ setSearchParams, onOpen, ...rest }) => {
               bg={useColorModeValue("white", "gray.900")}
               borderColor={useColorModeValue("gray.200", "gray.700")}
             >
-              {/* <MenuItem
-                onClick={() => setSearchParams({ path: "/admin/profile/" })}
-              >
-                Profile
-              </MenuItem> */}
-              {/* <MenuItem
-                onClick={() => setSearchParams({ path: "/admin/settings/" })}
-              >
-                Manage
-              </MenuItem> */}
-              {/* <MenuItem>Billing</MenuItem> */}
+
               <MenuDivider />
               <MenuItem onClick={() => navigate("/")}>Sign out</MenuItem>
             </MenuList>
@@ -268,9 +249,7 @@ const AdminNavbar = () => {
         {params.get("path") === "/admin/dashboard/" && <Dashboard />}
         {params.get("path") === "/admin/users/" && <AdminUsers />}
         {params.get("path") === "/admin/category/" && <AdminCategories />}
-        {params.get("path").split("/")[3] === "singleUser" && (
-          <UserByAdmin id={params.get("path").split("/")[4]} />
-        )}
+      
         {params.get("path") === "/admin/profile/" && <AdminProfile />}
 
         {/* <AdminRoutes /> */}

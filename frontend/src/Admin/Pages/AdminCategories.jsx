@@ -1,22 +1,8 @@
-// import React from "react";
-
-// const AdminCategories = () => {
-//   return <div>AdminCategories</div>;
-// };
-
-// export default AdminCategories;
 import React from "react";
 import {
-  Box,
-  Badge,
-  SimpleGrid,
   Container,
-  Image,
-  Link,
-  Text,
-  Heading,
+   Heading,
 } from "@chakra-ui/react";
-import AdminProductCard from "../Components/AdminPRoductCard";
 
 import { Products } from "./AdminDonation";
 
