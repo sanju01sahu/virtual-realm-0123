@@ -47,11 +47,8 @@ export const Products = () => {
     setnewRecipes1(newRecipe1);
   };
 
-
-  let Navigate = useNavigate();
   const [recipeData, setrecipeData] = useState([]);
-  const [page, setPage] = useState(1)
-  const  limit = 9
+
 
 
   const recipesList= ()=>{
