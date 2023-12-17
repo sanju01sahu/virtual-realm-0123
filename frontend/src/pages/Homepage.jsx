@@ -1,6 +1,6 @@
-import { Box } from "@chakra-ui/layout";
+import { Box, HStack } from "@chakra-ui/layout";
 import React from "react";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem, Tag, TagLabel } from "@chakra-ui/react";
 import {
   Accordion,
   AccordionItem,
@@ -223,9 +223,35 @@ const Homepage = () => {
             </GridItem>
           </Grid>
         </Box>
-        <Box name="for category display" h="400px" bg={"#FFE7CC"} mt="50px">
-          For the category display
-        </Box>
+        {/* <Box
+          key="for category display"
+          w={"80%"}
+          h="100%"
+          m={"auto"}
+          bg={"white"}
+          mt="50px"
+        >
+          <Grid
+            templateColumns={{
+              base: "1,1fr",
+              md: "repeat(2,1fr)",
+              lg: "repeat(4,1fr)",
+            }}
+            gap={6}
+            alignItems={"center"}
+          >
+            {data.map((ele) => {
+              return (
+                <GridItem
+                  h={"250px"}
+                  bg={"#ECF9FF"}
+                  borderRadius={"10px"}
+                  py={"5em"}
+                ></GridItem>
+              );
+            })}
+          </Grid>
+        </Box> */}
         <br />
 
         {/* =======================================  faq's   ================================= */}

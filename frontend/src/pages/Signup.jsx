@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { userSignup } from "../Redux/USER/userAction";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -31,21 +32,12 @@ const Signup = () => {
   const handleClick = () => setShow(!show);
 
   const handleRegister = () => {
-    console.log({ name, email, pass });
-    // fetch(`http://localhost:8080/users/register`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-type": "Application/json",
-    //   },
-    //   body: JSON.stringify({ name: name, email: email, password: pass }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data))
-    //   .catch((err) => console.log(err));
+    // console.log({ name, email, pass });
+    dispatch(userSignup({ name: name, email: email, password: pass }));
   };
 
   useEffect(() => {
-    console.log("from signup", user);
+    // console.log("from signup", user);
   }, [user]);
   return (
     <>
@@ -101,7 +93,7 @@ const Signup = () => {
                 colorScheme="teal"
                 onClick={(e) => handleRegister()}
               >
-                Login
+                Sign up
               </Button>
               <br />
               <br />
@@ -112,9 +104,11 @@ const Signup = () => {
                   or
                 </AbsoluteCenter>
               </Box>
-
+              {/* <h2 style={{ fontSize: "15px", textAlign: "center" }}>
+                Already a member ?{" "}
+              </h2> */}
               <Link style={{ textAlign: "center" }} to="/login">
-                <h2>
+                <h2 style={{ fontSize: "20px" }}>
                   Already a member ?{" "}
                   <span style={{ textDecoration: "underline" }}>Login</span>
                 </h2>
@@ -127,19 +121,35 @@ const Signup = () => {
               </Alert>
             ) : (
               <Alert
-                status={
-                  user.message == "User Not Found, Please Register"
-                    ? "error"
-                    : "info"
-                }
+                // status={
+                //   user.registerMessage == "user already exists , Please login"
+                //     ? "error"
+                //     : "success"
+                // }
+                status={(() => {
+                  if (
+                    user.registerMessage ===
+                    "user already exists , Please login"
+                  ) {
+                    return "error";
+                  } else if (
+                    user.registerMessage === "user registration successful"
+                  ) {
+                    return "success";
+                  } else if (user.registerMessage === "registration failed") {
+                    return "error";
+                  } else {
+                    return "info";
+                  }
+                })()}
                 variant="solid"
               >
                 <AlertIcon />
-                {user.message} <br />
+                {user.registerMessage}
                 {"   "}
-                <Link style={{ paddingLeft: "10px" }} to="/signup">
+                {/* <Link style={{ paddingLeft: "10px" }} to="/signup">
                   Click here to register
-                </Link>
+                </Link> */}
               </Alert>
             )}
           </GridItem>

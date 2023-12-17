@@ -8,3 +8,9 @@ export const USER_NOT_EXISTS = "USER_NOT_EXISTS";
 export const USER_EXISTS = "USER_EXISTS";
 
 export const REMOVE_MESSAGE = "REMOVE_MESSAGE";
+
+export const USER_SIGNUP_LOADING = "USER_SIGNUP_LOADING";
+export const USER_SIGNUP_SUCCESS = "USER_SIGNUP_SUCCESS";
+export const USER_SIGNUP_FAILED = "USER_SIGNUP_FAILED";
+
+export const LOGIN_TOKEN = "login-token";
