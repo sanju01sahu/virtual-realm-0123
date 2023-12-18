@@ -27,14 +27,9 @@ const AdminUsers = () => {
   const [users, setUsers] = useState([]);
 
 
-  const isLoading = true;
-  const userData = [];
-
   const userDetails=()=>{
 
-      fetch(`${URL}users/`,{
-        method:"GET"
-      }).then((res) => { return res.json() }).then((data) => {
+      fetch(`${URL}/users/`).then((res) => { return res.json() }).then((data) => {
         console.log(data);
         setUsers(data)
       })
@@ -46,7 +41,7 @@ const AdminUsers = () => {
 
   
   const handleDeleteUser = (id) => {
-    fetch(`${URL}users/delete/${id}`,{
+    fetch(`${URL}/users/delete/${id}`,{
       method:"DELETE"
     })
       .then((res) => { return res.json() }).then((data) => {

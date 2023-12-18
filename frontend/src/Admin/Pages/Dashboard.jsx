@@ -10,7 +10,7 @@ const Dashboard = () => {
   useEffect(() => {}, []);
 
   const [ChartGlobalData, setData] = useState([
-    ["Category", "Goal", "Raised"],
+    ["Category", "Expect", "Current"],
     ["Asian", 1000, 400],
     ["Italian", 1170, 460],
     ["Middle Eastern", 660, 1120],
@@ -18,12 +18,12 @@ const Dashboard = () => {
   ]);
   const [baroptions, setOptions] = useState({
     chart: {
-      title: "Empowering Change: Fund Collection Report",
+      title: "Empowering Change:Current Recipe in catelogs",
       subtitle: "Transforming Contributions into Impact",
     },
   });
   const [pieOptions, setPieoptions] = useState({
-    title: "3D representation of Funds raised",
+    title: "3D representation of overall Categol by Category",
     is3D: true,
   });
 
