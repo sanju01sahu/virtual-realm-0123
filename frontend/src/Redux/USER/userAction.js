@@ -15,11 +15,12 @@ import setCookie from "../../../utils/setCooke";
 import Cookies from "js-cookie";
 import { removeCookie } from "../../../utils/removeCookie";
 import { getCookie } from "../../../utils/getCookie";
+import { URL } from "../../constants";
 
 export const userLogin = (data) => async (dispatch) => {
   dispatch({ type: AUTH_REQUEST });
   console.log(data, "before start api call login");
-  fetch(`http://localhost:8080/users/login`, {
+  fetch(`${URL}/users/login`, {
     method: "POST",
     headers: {
       "Content-type": "Application/json",
@@ -55,11 +56,13 @@ export const removeMessage = () => (dispatch) => {
 };
 
 // =================================================signup=================================
-
+//
+//
+//
 export const userSignup = (data) => (dispatch) => {
   // console.log(data, "user signup");
   dispatch({ type: USER_SIGNUP_LOADING });
-  fetch(`http://localhost:8080/users/register`, {
+  fetch(`${URL}/users/register`, {
     method: "POST",
     headers: {
       "Content-type": "Application/json",

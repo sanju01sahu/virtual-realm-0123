@@ -19,8 +19,9 @@ const RecipeCard = ({ title, image, category, serving, _id }) => {
   const navigate = useNavigate();
   const { isAuth, userData } = useSelector((store) => store.userReducer);
 
-  const handleNavigate = () => {
-    navigate(`/singleproduct/${_id}`);
+  console.log(_id);
+  const handleNavigate = (id) => {
+    navigate(`/singleproduct/${id}`);
   };
 
   const handleCart = () => {
@@ -43,7 +44,7 @@ const RecipeCard = ({ title, image, category, serving, _id }) => {
         ) : (
           ""
         )}
-        <Button bg={"#87CBB9"} onClick={handleNavigate}>
+        <Button bg={"#87CBB9"} onClick={() => handleNavigate(_id)}>
           View
         </Button>
       </div>
