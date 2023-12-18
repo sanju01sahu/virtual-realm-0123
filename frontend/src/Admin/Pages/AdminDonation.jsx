@@ -43,27 +43,27 @@ export const Products = () => {
       ...newRecipes1,
       [e.target.name]: e.target.value,
     };
-    // console.log(newRecipe1)
+
     setnewRecipes1(newRecipe1);
   };
 
   const [recipeData, setrecipeData] = useState([]);
 
 
+  const recipesList = () => {
+    fetch(`http://localhost:8080/recipe`).then((res) => res.json()).then((data) => {
 
-  const recipesList= ()=>{
-    fetch(`http://localhost:8080/recipe`).then((res)=>res.json()).then((data)=>{
-      // console.log(data.data);
+   
       setrecipeData(data.data);
     })
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     recipesList()
-  },[])
+  }, [])
 
-  
-  const  AddRecipes = async (e) => {
+
+  const AddRecipes = async (e) => {
     e.preventDefault();
     try {
       let res = await fetch("http://localhost:8080/recipe/newRecipe", {
@@ -83,31 +83,30 @@ export const Products = () => {
     setnewRecipes(initRecipe);
   };
 
-  // console.log(data)
   const handleEdit = (id) => {
-    const editData = recipeData.filter((el)=>el._id==id)
+    const editData = recipeData.filter((el) => el._id == id)
     setnewRecipes1(editData[0]);
 
   };
 
-  // console.log(newRecipes1)
-  let ids = newRecipes1._id;
-// console.log(ids)
 
-const EditProduct = async() => {
-    // console.log(typeof ids)
+  let ids = newRecipes1._id;
+
+
+  const EditProduct = async () => {
+
     try {
-      
-     let res =await fetch(`http://localhost:8080/recipe/updateRecipe/${ids}`, {
+
+      let res = await fetch(`http://localhost:8080/recipe/updateRecipe/${ids}`, {
         method: "PATCH",
-        headers:{
-          "Content-Type":"application/json"
+        headers: {
+          "Content-Type": "application/json"
         },
-        body:JSON.stringify(newRecipes1)
+        body: JSON.stringify(newRecipes1)
       })
       let data = res.json();
       console.log(data)
-      
+
       recipesList();
       setnewRecipes1(initRecipe)
     } catch (error) {
@@ -115,16 +114,16 @@ const EditProduct = async() => {
     }
 
   };
-  const deleteProduct =  async (id) => {
+  const deleteProduct = async (id) => {
 
     try {
-      
+
       await fetch(`http://localhost:8080/recipe/deleteRecipe/${id}`, {
         method: "DELETE",
-       
+
       })
       recipesList();
-      
+
     } catch (error) {
       throw new Error(error)
     }
@@ -354,12 +353,14 @@ const EditProduct = async() => {
           </Flex>
         </Box>
         <Box>
+     
           <SimpleGrid
             mt={"30px"}
             spacing={10}
             columns={[1, 2, 3]}
             w={"100%"}
           >
+           
             {recipeData?.map((el) => (
               <AdminProductCard
                 key={el._id}

@@ -3,7 +3,7 @@ const orderRouter = express.Router();
 const { OrderModel } = require("../models/orders.model");
 const {auth} = require("../middlewares/auth.middleware")
 
-postRoute.use(auth);
+orderRouter.use(auth);
 
 
 
