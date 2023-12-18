@@ -4,8 +4,8 @@ const orderSchema = mongoose.Schema({
   userId: { type: String, required: true },
   orders: [
     {
-      recipeId: { type: String, required: true },
-      quantity: { type: Number, required: true },
+      recipeId: { type: String},
+      quantity: { type: Number},
     },
   ],
 });
