@@ -54,15 +54,15 @@ const RecipeList = () => {
     const [params, setParams] = useState(state);
     const [data, setData] = useState([]);
     
-    useEffect(async()=>{
+    useEffect(()=>{
         axios.get(newUrl,{
             params:params,
         })
-        .then((res)=>setData(res.data))
+        .then((res)=>{setData(res.data["data"])})
         .catch((error)=>console.log(error));
     }, [params])
 
-
+    console.log(data)
   return (
     <div>
         <Navbar />
@@ -73,7 +73,7 @@ const RecipeList = () => {
 
         </div>
         <div className='recipe-container' >
-            {pa.map((el)=>{
+            {data.map((el)=>{
                 return <RecipeCard key={el["_id"]} {...el} />
             })}
         </div>
