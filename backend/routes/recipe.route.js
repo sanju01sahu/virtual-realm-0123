@@ -71,15 +71,9 @@ recipeRouter.patch("/updateRecipe/:id",async(req,res)=>{
         res.status(400).send({"error":err.message});
     }
 })
+ 
 
 
-    await RecipeModel.findOneAndUpdate({ _id: id }, updateFields);
-    let updatedRecipe = await RecipeModel.find({ _id: id });
-    res.status(200).send({ msg: "recipe updated", data: updatedRecipe });
-  } catch (err) {
-    res.status(400).send({ error: err.message });
-  }
-});
 
 recipeRouter.delete("/deleteRecipe/:id", async (req, res) => {
   try {
