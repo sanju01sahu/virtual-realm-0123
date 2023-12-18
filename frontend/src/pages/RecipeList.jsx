@@ -4,10 +4,14 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useDispatch } from 'react-redux'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
+import { URL } from '../constants'
 
-const URL = `http://localhost:8080/recipe/`
 
-const data = [{
+
+const newUrl = `${URL}/recipe/`
+
+const pata = [{
     "_id":"1a",
     "image": [
         "https://www.joyousapron.com/wp-content/uploads/2021/03/Mee-Goreng-Sq-2.jpg"
@@ -46,11 +50,12 @@ const state = {
 
 const RecipeList = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [params, setParams] = useState(state);
     const [data, setData] = useState([]);
     
     useEffect(async()=>{
-        axios.get(URL,{
+        axios.get(newUrl,{
             params:params,
         })
         .then((res)=>setData(res.data))
@@ -68,7 +73,7 @@ const RecipeList = () => {
 
         </div>
         <div className='recipe-container' >
-            {data.map((el)=>{
+            {pa.map((el)=>{
                 return <RecipeCard key={el["_id"]} {...el} />
             })}
         </div>
