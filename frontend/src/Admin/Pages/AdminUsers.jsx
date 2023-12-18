@@ -15,7 +15,7 @@ import {
   Tr,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { useSearchParams } from "react-router-dom";
+import { URL } from "../../constants";
 
 const AdminUsers = () => {
 
@@ -27,14 +27,10 @@ const AdminUsers = () => {
   const [users, setUsers] = useState([]);
 
 
-  const isLoading = true;
-  const userData = [];
-
   const userDetails=()=>{
 
-      fetch(`http://localhost:8080/users/`)
-      .then((res) => { return res.json() }).then((data) => {
-        // console.log(data);
+      fetch(`${URL}/users/`).then((res) => { return res.json() }).then((data) => {
+        console.log(data);
         setUsers(data)
       })
       .catch((err) => {
@@ -45,7 +41,7 @@ const AdminUsers = () => {
 
   
   const handleDeleteUser = (id) => {
-    fetch(`http://localhost:8080/users/delete/${id}`,{
+    fetch(`${URL}/users/delete/${id}`,{
       method:"DELETE"
     })
       .then((res) => { return res.json() }).then((data) => {

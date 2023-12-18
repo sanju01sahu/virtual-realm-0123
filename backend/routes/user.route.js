@@ -6,6 +6,16 @@ const { BlacklistModel } = require("../models/blacklist.model");
 
 const userRouter = express.Router();
 
+userRouter.get("/",async(req,res)=>{
+  try {
+    let users=await UserModel.find();
+  return  res.status(200).send(users)
+  } catch (error) {
+    return res.status(400).send({ err: error });
+    
+  }
+});
+
 userRouter.post("/register", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -72,6 +82,18 @@ userRouter.post("/logout", async (req, res) => {
     return res.status(200).send({ msg: "You are logged out" });
   } catch (err) {
     res.status(400).send({ error: err.message });
+  }
+});
+
+userRouter.delete("/delete/:id",async(req,res)=>{
+  try {
+    const {id} = req.params;
+
+    await UserModel.findByIdAndDelete({_id:id});
+  return  res.status(200).send({msg:"User has been deleted"})
+  } catch (error) {
+    return res.status(400).send({ err: error });
+    
   }
 });
 module.exports = { userRouter };
