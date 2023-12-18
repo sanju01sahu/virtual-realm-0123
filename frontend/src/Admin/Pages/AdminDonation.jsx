@@ -11,7 +11,6 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 import AdminProductCard from "../Components/AdminPRoductCard";
 
 
@@ -23,7 +22,7 @@ export const Products = () => {
     category: "",
     price: 0,
     ingredients: "",
-    servings: "",
+    serving: "",
     instructions: "",
   };
   let newRecipe;
@@ -189,7 +188,7 @@ export const Products = () => {
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
-                  placeholder="Ingredient number"
+                  placeholder="Price of Recipe"
                   type="number"
                   name="price"
                   value={newRecipes.price}
@@ -207,10 +206,10 @@ export const Products = () => {
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
-                  placeholder="servings"
+                  placeholder="serving"
                   type="text"
-                  name="servings"
-                  value={newRecipes.servings}
+                  name="serving"
+                  value={newRecipes.serving}
                   onChange={handleChange}
                 />
                 <Input
@@ -224,16 +223,16 @@ export const Products = () => {
                 />
 
                 <Button
-                  fontSize="16"
+                  fontSize="20"
                   w="90%"
-                  bg="teal"
+                  bg="#68b79f"
                   _hover={{ bgColor: "#df8c09" }}
                   letterSpacing={"1px"}
                   //   onClick={handleSignup}
                   m={"20px auto"}
                   borderRadius={"0"}
-                  fontWeight={"300"}
-                  color={"white"}
+                  fontWeight={"600"}
+                  color={""}
                   colorScheme="black"
                   onClick={AddRecipes}
                 >
@@ -311,10 +310,10 @@ export const Products = () => {
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
-                  placeholder="servings"
+                  placeholder="serving"
                   type="text"
-                  name="servings"
-                  value={newRecipes1.servings}
+                  name="serving"
+                  value={newRecipes1.serving}
                   onChange={handleChange1}
                 />
                 <Input
@@ -327,16 +326,17 @@ export const Products = () => {
                   onChange={handleChange1}
                 />
                 <Button
-                  fontSize="16"
+                  fontSize="20"
+                 
                   w="90%"
-                  bg="teal"
+                  bg="#68b79f"
                   _hover={{ bgColor: "#df8c09" }}
                   letterSpacing={"1px"}
                   //   onClick={handleSignup}
                   m={"20px auto"}
                   borderRadius={"0"}
-                  fontWeight={"300"}
-                  color={"white"}
+                  fontWeight={"600"}
+                  color={""}
                   colorScheme="black"
                   onClick={EditProduct}
                 >
