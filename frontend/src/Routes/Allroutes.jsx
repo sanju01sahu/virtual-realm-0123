@@ -19,11 +19,11 @@ const Allroutes = () => {
         <Route path="/aboutus" element={<Aboutus />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/singleproduct" element={<SingleProduct />}></Route>
+        <Route path="/singleproduct/:id" element={<SingleProduct />}></Route>
         <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/admin" element={<AdminNavbar />}></Route>
-        <Route path="/recipe" element={<RecipeList />}></Route>
+        <Route path="/ourmenu" element={<RecipeList />}></Route>
       </Routes>
     </div>
   );
