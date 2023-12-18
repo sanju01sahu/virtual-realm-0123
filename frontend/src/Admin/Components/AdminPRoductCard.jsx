@@ -5,7 +5,7 @@ const AdminProductCard = ({ data, deleteProduct, handleEdit }) => {
 
   return (
     <Box
-      bg={"white"}
+    bg="#F6F6F6"
       borderRadius={"0px"}
       m={"auto"}
       // p={"10px"}

@@ -12,6 +12,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import AdminProductCard from "../Components/AdminPRoductCard";
+import { URL } from "../../constants";
 
 
 
@@ -48,7 +49,7 @@ export const Products = () => {
   const [recipeData, setrecipeData] = useState([]);
 
   const recipesList = () => {
-    fetch(`http://localhost:8080/recipe`).then((res) => res.json()).then((data) => {
+    fetch(`${URL}recipe`).then((res) => res.json()).then((data) => {
       setrecipeData(data.data);
     })
   }
@@ -61,7 +62,7 @@ export const Products = () => {
   const AddRecipes = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("http://localhost:8080/recipe/newRecipe", {
+      let res = await fetch(`${URL}recipe/newRecipe`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +91,7 @@ export const Products = () => {
 
     try {
 
-      let res = await fetch(`http://localhost:8080/recipe/updateRecipe/${ids}`, {
+      let res = await fetch(`${URL}recipe/updateRecipe/${ids}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"
@@ -111,7 +112,7 @@ export const Products = () => {
 
     try {
 
-      await fetch(`http://localhost:8080/recipe/deleteRecipe/${id}`, {
+      await fetch(`${URL}recipe/deleteRecipe/${id}`, {
         method: "DELETE",
 
       })
