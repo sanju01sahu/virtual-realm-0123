@@ -11,7 +11,6 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 import AdminProductCard from "../Components/AdminPRoductCard";
 
 
@@ -23,7 +22,7 @@ export const Products = () => {
     category: "",
     price: 0,
     ingredients: "",
-    servings: "",
+    serving: "",
     instructions: "",
   };
   let newRecipe;
@@ -37,33 +36,29 @@ export const Products = () => {
     setnewRecipes(newRecipe);
   };
 
-  // console.log(newRecipes)
   const handleChange1 = (e) => {
     let newRecipe1 = {
       ...newRecipes1,
       [e.target.name]: e.target.value,
     };
-    // console.log(newRecipe1)
+
     setnewRecipes1(newRecipe1);
   };
 
   const [recipeData, setrecipeData] = useState([]);
 
-
-
-  const recipesList= ()=>{
-    fetch(`http://localhost:8080/recipe`).then((res)=>res.json()).then((data)=>{
-      // console.log(data.data);
+  const recipesList = () => {
+    fetch(`http://localhost:8080/recipe`).then((res) => res.json()).then((data) => {
       setrecipeData(data.data);
     })
   }
 
-  useEffect(()=>{
-    recipesList()
-  },[])
+  useEffect(() => {
+        recipesList()
+  }, [])
 
-  
-  const  AddRecipes = async (e) => {
+
+  const AddRecipes = async (e) => {
     e.preventDefault();
     try {
       let res = await fetch("http://localhost:8080/recipe/newRecipe", {
@@ -83,31 +78,28 @@ export const Products = () => {
     setnewRecipes(initRecipe);
   };
 
-  // console.log(data)
   const handleEdit = (id) => {
-    const editData = recipeData.filter((el)=>el._id==id)
+    const editData = recipeData.filter((el) => el._id == id)
     setnewRecipes1(editData[0]);
 
   };
 
-  // console.log(newRecipes1)
-  let ids = newRecipes1._id;
-// console.log(ids)
 
-const EditProduct = async() => {
-    // console.log(typeof ids)
+  let ids = newRecipes1._id;
+  const EditProduct = async () => {
+
     try {
-      
-     let res =await fetch(`http://localhost:8080/recipe/updateRecipe/${ids}`, {
+
+      let res = await fetch(`http://localhost:8080/recipe/updateRecipe/${ids}`, {
         method: "PATCH",
-        headers:{
-          "Content-Type":"application/json"
+        headers: {
+          "Content-Type": "application/json"
         },
-        body:JSON.stringify(newRecipes1)
+        body: JSON.stringify(newRecipes1)
       })
       let data = res.json();
       console.log(data)
-      
+
       recipesList();
       setnewRecipes1(initRecipe)
     } catch (error) {
@@ -115,16 +107,16 @@ const EditProduct = async() => {
     }
 
   };
-  const deleteProduct =  async (id) => {
+  const deleteProduct = async (id) => {
 
     try {
-      
+
       await fetch(`http://localhost:8080/recipe/deleteRecipe/${id}`, {
         method: "DELETE",
-       
+
       })
       recipesList();
-      
+
     } catch (error) {
       throw new Error(error)
     }
@@ -196,7 +188,7 @@ const EditProduct = async() => {
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
-                  placeholder="Ingredient number"
+                  placeholder="Price of Recipe"
                   type="number"
                   name="price"
                   value={newRecipes.price}
@@ -214,10 +206,10 @@ const EditProduct = async() => {
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
-                  placeholder="servings"
+                  placeholder="serving"
                   type="text"
-                  name="servings"
-                  value={newRecipes.servings}
+                  name="serving"
+                  value={newRecipes.serving}
                   onChange={handleChange}
                 />
                 <Input
@@ -231,16 +223,16 @@ const EditProduct = async() => {
                 />
 
                 <Button
-                  fontSize="16"
+                  fontSize="20"
                   w="90%"
-                  bg="teal"
+                  bg="#68b79f"
                   _hover={{ bgColor: "#df8c09" }}
                   letterSpacing={"1px"}
                   //   onClick={handleSignup}
                   m={"20px auto"}
                   borderRadius={"0"}
-                  fontWeight={"300"}
-                  color={"white"}
+                  fontWeight={"600"}
+                  color={""}
                   colorScheme="black"
                   onClick={AddRecipes}
                 >
@@ -318,10 +310,10 @@ const EditProduct = async() => {
                 <Input
                   variant="flushed"
                   borderBottom={"1px solid black"}
-                  placeholder="servings"
+                  placeholder="serving"
                   type="text"
-                  name="servings"
-                  value={newRecipes1.servings}
+                  name="serving"
+                  value={newRecipes1.serving}
                   onChange={handleChange1}
                 />
                 <Input
@@ -334,16 +326,17 @@ const EditProduct = async() => {
                   onChange={handleChange1}
                 />
                 <Button
-                  fontSize="16"
+                  fontSize="20"
+                 
                   w="90%"
-                  bg="teal"
+                  bg="#68b79f"
                   _hover={{ bgColor: "#df8c09" }}
                   letterSpacing={"1px"}
                   //   onClick={handleSignup}
                   m={"20px auto"}
                   borderRadius={"0"}
-                  fontWeight={"300"}
-                  color={"white"}
+                  fontWeight={"600"}
+                  color={""}
                   colorScheme="black"
                   onClick={EditProduct}
                 >
@@ -354,12 +347,28 @@ const EditProduct = async() => {
           </Flex>
         </Box>
         <Box>
+        {/* <Box>
+           <Select
+                  variant="flushed"
+                  borderBottom={"1px solid black"}
+                  name="category"
+                  value={cat}
+                  placeholder="Filter By Category "
+                  onChange={(e)=>setCategory(e.target.value)}
+                >
+                  <option value="Asian">Asian</option>
+                  <option value="Italian">Italian</option>
+                  <option value="Middle eastern">Middle eastern</option>
+                  <option value="Spicy mexican">Spicy mexican</option>
+                </Select>
+        </Box> */}
           <SimpleGrid
             mt={"30px"}
             spacing={10}
             columns={[1, 2, 3]}
             w={"100%"}
           >
+
             {recipeData?.map((el) => (
               <AdminProductCard
                 key={el._id}

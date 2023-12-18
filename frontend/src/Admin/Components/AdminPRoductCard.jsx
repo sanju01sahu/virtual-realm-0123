@@ -1,15 +1,11 @@
-import { Box, Button, Heading, Image, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-
-
-import { useNavigate } from "react-router-dom";
+import { Box, Button, Image, Text } from "@chakra-ui/react";
+import React  from "react";
 
 const AdminProductCard = ({ data, deleteProduct, handleEdit }) => {
-  let navigate = useNavigate();
 
   return (
     <Box
-      bg={"#f5f5f5"}
+      bg={"white"}
       borderRadius={"0px"}
       m={"auto"}
       // p={"10px"}
@@ -50,13 +46,13 @@ const AdminProductCard = ({ data, deleteProduct, handleEdit }) => {
         <Button
           fontSize="16"
           w="40%"
-          bg="#09c8bb"
+          bg="#B9EDDD"
           _hover={{ bgColor: "#8fc507" }}
           letterSpacing={"1px"}
           m={"10px auto"}
           borderRadius={"0"}
           fontWeight={"300"}
-          color={"white"}
+          color={"black"}
           colorScheme="black"
           onClick={() => {
             handleEdit(data?._id);
