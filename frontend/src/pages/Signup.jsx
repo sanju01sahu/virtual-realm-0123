@@ -132,10 +132,15 @@ const Signup = () => {
                     "user already exists , Please login"
                   ) {
                     return "error";
-                  } else if (user.registerMessage === "new user resgitered") {
-                    return "success";
+                  } else if (
+                    user.registerMessage ===
+                    "Sign up to become a valuable customer"
+                  ) {
+                    return "info";
                   } else if (user.registerMessage === "registration failed") {
                     return "error";
+                  } else if (user.registerMessage === "new user resgitered") {
+                    return "success";
                   } else {
                     return "info";
                   }
