@@ -18,12 +18,12 @@ const Dashboard = () => {
   ]);
   const [baroptions, setOptions] = useState({
     chart: {
-      title: "Empowering Change:Current Recipe in catelogs",
+      title: "Current Recipe in catalogue",
       subtitle: "Transforming Contributions into Impact",
     },
   });
   const [pieOptions, setPieoptions] = useState({
-    title: "3D representation of overall Categol by Category",
+    title: "Representation of recipe Catalogue by Category",
     is3D: true,
   });
 
@@ -38,18 +38,22 @@ const Dashboard = () => {
   };
   return (
     <div>
-      <Heading textAlign={"center"}
-                fontSize={{ base: "30px", md: "30px", lg: "35px" }}
-                pb="15px"
-                >
-                  Dashboard
-                  </Heading>
+      <Heading
+        textAlign={"center"}
+        fontSize={{ base: "30px", md: "30px", lg: "35px" }}
+        pb="15px"
+      >
+        Dashboard
+      </Heading>
       <Grid
-        templateColumns={{base:"repeat(1, 1fr)", md:"repeat(1, 1fr)", lg:"repeat(2, 1fr)"}}
+        templateColumns={{
+          base: "repeat(1, 1fr)",
+          md: "repeat(1, 1fr)",
+          lg: "repeat(2, 1fr)",
+        }}
         gap={4}
       >
         <GridItem
-         
           p="1%"
           colSpan={[1, 1, 1]}
           bg="lightgrey"
@@ -69,7 +73,6 @@ const Dashboard = () => {
         {/* ================  Bar chart   ========================= */}
         <GridItem
           h="320px"
-          
           colSpan={[1, 1, 1]}
           bg="lightgrey"
           style={{ borderRadius: "10px" }}
@@ -81,8 +84,6 @@ const Dashboard = () => {
             data={ChartGlobalData}
             options={baroptions}
           />
-
-      
         </GridItem>
 
         {/* ====================  Pie chart  =============== */}
@@ -99,7 +100,6 @@ const Dashboard = () => {
             width={"100%"}
             height={"100%"}
           />
-         
         </GridItem>
 
         {/* ======================  line chart  ============== */}
@@ -116,7 +116,6 @@ const Dashboard = () => {
             data={ChartGlobalData}
             options={lineOPtions}
           />
-        
         </GridItem>
       </Grid>
     </div>
