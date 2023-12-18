@@ -37,7 +37,6 @@ export const Products = () => {
     setnewRecipes(newRecipe);
   };
 
-  // console.log(newRecipes)
   const handleChange1 = (e) => {
     let newRecipe1 = {
       ...newRecipes1,
@@ -49,17 +48,14 @@ export const Products = () => {
 
   const [recipeData, setrecipeData] = useState([]);
 
-
   const recipesList = () => {
     fetch(`http://localhost:8080/recipe`).then((res) => res.json()).then((data) => {
-
-   
       setrecipeData(data.data);
     })
   }
 
   useEffect(() => {
-    recipesList()
+        recipesList()
   }, [])
 
 
@@ -91,8 +87,6 @@ export const Products = () => {
 
 
   let ids = newRecipes1._id;
-
-
   const EditProduct = async () => {
 
     try {
@@ -353,14 +347,28 @@ export const Products = () => {
           </Flex>
         </Box>
         <Box>
-     
+        {/* <Box>
+           <Select
+                  variant="flushed"
+                  borderBottom={"1px solid black"}
+                  name="category"
+                  value={cat}
+                  placeholder="Filter By Category "
+                  onChange={(e)=>setCategory(e.target.value)}
+                >
+                  <option value="Asian">Asian</option>
+                  <option value="Italian">Italian</option>
+                  <option value="Middle eastern">Middle eastern</option>
+                  <option value="Spicy mexican">Spicy mexican</option>
+                </Select>
+        </Box> */}
           <SimpleGrid
             mt={"30px"}
             spacing={10}
             columns={[1, 2, 3]}
             w={"100%"}
           >
-           
+
             {recipeData?.map((el) => (
               <AdminProductCard
                 key={el._id}
