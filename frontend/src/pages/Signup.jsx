@@ -14,7 +14,7 @@ import {
   InputGroup,
   InputRightElement,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
@@ -35,7 +35,7 @@ const Signup = () => {
     // console.log({ name, email, pass });
     dispatch(userSignup({ name: name, email: email, password: pass }));
   };
-
+  const navigate = useNavigate();
   useEffect(() => {
     // console.log("from signup", user);
   }, [user]);
@@ -132,9 +132,7 @@ const Signup = () => {
                     "user already exists , Please login"
                   ) {
                     return "error";
-                  } else if (
-                    user.registerMessage === "user registration successful"
-                  ) {
+                  } else if (user.registerMessage === "new user resgitered") {
                     return "success";
                   } else if (user.registerMessage === "registration failed") {
                     return "error";
